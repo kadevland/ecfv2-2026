@@ -1,0 +1,52 @@
+/**
+ * Scroll Components CSS
+ *
+ * Styles pour les composants de scroll et scrollspy
+ * Compatible avec Preline UI
+ */
+
+/* Smooth scroll global */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Scroll margins pour les offsets */
+.scroll-offset-50 {
+    scroll-margin-top: 50px;
+}
+
+.scroll-offset-100 {
+    scroll-margin-top: 100px;
+}
+
+.scroll-offset-150 {
+    scroll-margin-top: 150px;
+}
+
+.scroll-offset-200 {
+    scroll-margin-top: 200px;
+}
+
+/* Back to top transitions */
+.back-top-button {
+    transition: all 0.3s ease-in-out;
+}
+
+.back-top-button:hover {
+    transform: scale(1.1);
+}
+
+/* Progress circle animation */
+.progress-circle {
+    transition: stroke-dashoffset 0.1s ease-out;
+}
+
+/* Scrollspy active states pour thème cinema */
+.hs-scrollspy-active.cinema-nav {
+    @apply text-cinema-gold font-medium;
+}
+
+/* Scrollspy active states pour thème admin */
+.hs-scrollspy-active.admin-nav {
+    @apply text-blue-600 font-medium;
+}

@@ -1,0 +1,19 @@
+/* ====================================================================
+   PRELINE UI CUSTOMIZATIONS
+   Surcharges spécifiques pour Preline UI
+   ==================================================================== */
+
+/* Customizations pour le thème admin */
+.admin-theme .hs-accordion-content {
+    /* Exemple customization Preline */
+}
+
+/* Customizations pour les formulaires Preline */
+.admin-theme .hs-input {
+    /* Surcharges inputs Preline si nécessaire */
+}
+
+/* Customizations pour les modals Preline */
+.admin-theme .hs-overlay {
+    /* Surcharges modals Preline si nécessaire */
+}

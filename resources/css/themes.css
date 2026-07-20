@@ -1,0 +1,86 @@
+/* ===== THEMES CSS - Cinema vs Admin ===== */
+
+/*
+ * Style la pagination différemment selon le context
+ * html.admin => Style clair professionnel (bleu)
+ * html.cinema => Style sombre cinéphile (doré)
+ */
+
+/* ===== ADMIN THEME (défaut - style clair bleu) ===== */
+html.admin nav[role="navigation"] {
+  /* Déjà bon par défaut avec les nouvelles classes */
+}
+
+/* ===== CINEMA THEME (style sombre doré) ===== */
+
+/* Pagination Cinema - Texte des compteurs */
+html.cinema nav[role="navigation"] p {
+  @apply text-yellow-300;
+}
+
+/* Pagination Cinema - Pages actives (bien visible) */
+html.cinema nav[role="navigation"] span[aria-current="page"] span {
+  @apply bg-yellow-500 text-black border-yellow-500 font-semibold;
+}
+
+/* Pagination Cinema - Pages inactives */
+html.cinema nav[role="navigation"] a[aria-label*="Go to page"] {
+  @apply bg-gray-800 text-yellow-300 border-gray-600 hover:text-yellow-400 hover:bg-gray-700;
+}
+
+/* Pagination Cinema - Boutons Prev/Next actifs */
+html.cinema nav[role="navigation"] a[rel="prev"],
+html.cinema nav[role="navigation"] a[rel="next"] {
+  @apply bg-gray-800 text-yellow-300 border-gray-600 hover:text-yellow-400 hover:bg-gray-700;
+}
+
+/* Pagination Cinema - Boutons Prev/Next désactivés */
+html.cinema nav[role="navigation"] span[aria-disabled="true"] span {
+  @apply bg-gray-900 text-gray-600 border-gray-700;
+}
+
+/* Pagination Cinema - Séparateurs "..." */
+html.cinema nav[role="navigation"] span[aria-disabled="true"]:not([aria-label]) span {
+  @apply bg-gray-800 text-gray-500 border-gray-600;
+}
+
+/* Pagination Cinema - Version mobile */
+html.cinema nav[role="navigation"] .sm\\:hidden a {
+  @apply bg-gray-800 text-yellow-300 border-gray-600 hover:text-yellow-400 hover:bg-gray-700;
+}
+
+html.cinema nav[role="navigation"] .sm\\:hidden span {
+  @apply bg-gray-900 text-gray-600 border-gray-700;
+}
+
+/* ===== AUTRES COMPOSANTS CINEMA ===== */
+
+/* Boutons généraux Cinema */
+html.cinema .btn-cinema {
+  @apply bg-yellow-500 text-black hover:bg-yellow-400 border-yellow-500;
+}
+
+html.cinema .btn-cinema-secondary {
+  @apply bg-transparent text-yellow-500 border-yellow-500 hover:bg-yellow-500 hover:text-black;
+}
+
+/* Cards Cinema */
+html.cinema .card-cinema {
+  @apply bg-gray-900 border-yellow-500 text-yellow-300;
+}
+
+/* ===== AUTRES COMPOSANTS ADMIN ===== */
+
+/* Boutons généraux Admin (défaut Tailwind) */
+html.admin .btn-admin {
+  @apply bg-blue-600 text-white hover:bg-blue-700 border-blue-600;
+}
+
+html.admin .btn-admin-secondary {
+  @apply bg-transparent text-blue-600 border-blue-600 hover:bg-blue-600 hover:text-white;
+}
+
+/* Cards Admin */
+html.admin .card-admin {
+  @apply bg-white border-gray-200 text-gray-900;
+}

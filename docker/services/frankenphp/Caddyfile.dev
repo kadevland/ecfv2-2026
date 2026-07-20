@@ -1,0 +1,32 @@
+{
+    # Configuration de développement FrankenPHP
+    auto_https off
+    admin off
+    frankenphp {
+        num_threads 8
+    }
+}
+
+0.0.0.0:8000 {
+    # Configuration Laravel pour développement
+    root * /app/public
+    encode gzip
+    
+    # Support pour Laravel routing avec FrankenPHP
+    php_server
+    file_server
+    
+    # Support pour Vite HMR en dev
+    header {
+        # CORS pour Vite dev server
+        Access-Control-Allow-Origin http://localhost:5174
+        Access-Control-Allow-Methods GET,POST,PUT,DELETE,OPTIONS
+        Access-Control-Allow-Headers *
+    }
+    
+    # Logs détaillés pour debug
+    log {
+        output stdout
+        level DEBUG
+    }
+}

@@ -1,0 +1,733 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to function is_string\(\) with non\-falsy\-string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Infrastructure/Database/Models/MongoDB/ReservationRead.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Paiement\:\:\$statut\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/Reservations/Reservation.php
+
+		-
+			message: '#^Call to static method new\(\) on an unknown class Database\\Factories\\User\\UserProfilFactory\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserProfil.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Database\\Models\\User\\UserProfil\:\:getAgeAttribute\(\) never returns int so it can be removed from the return type\.$#'
+			identifier: return.unusedType
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserProfil.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Database\\Models\\User\\UserProfil\:\:getAgeAttribute\(\) should return int\|null but returns float\|null\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserProfil.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Database\\Models\\User\\UserProfil\:\:newFactory\(\) has invalid return type Database\\Factories\\User\\UserProfilFactory\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserProfil.php
+
+		-
+			message: '#^PHPDoc tag @use has invalid type Database\\Factories\\User\\UserProfilFactory\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserProfil.php
+
+		-
+			message: '#^Type Database\\Factories\\User\\UserProfilFactory in generic type Illuminate\\Database\\Eloquent\\Factories\\HasFactory\<Database\\Factories\\User\\UserProfilFactory\> in PHPDoc tag @use is not subtype of template type TFactory of Illuminate\\Database\\Eloquent\\Factories\\Factory of trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory\.$#'
+			identifier: generics.notSubtype
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserProfil.php
+
+		-
+			message: '#^Access to constant CONNECTION on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant CREATED_AT on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant DATE_SUPPRESSION on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 2
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant DONNEES_CONSERVEES on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 2
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant FULL_TABLE on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant ORIGIN_TYPE on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant PRIMARY_KEY on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant RAISON_SUPPRESSION on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant UPDATED_AT on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant USER_ID on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Access to constant USER_KEY on an unknown class App\\Infrastructure\\Database\\Schemas\\User\\UserRgpdProfilSchema\.$#'
+			identifier: class.notFound
+			count: 2
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Call to static method new\(\) on an unknown class Database\\Factories\\User\\UserRgpdProfilFactory\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Database\\Models\\User\\UserRgpdProfil\:\:newFactory\(\) has invalid return type Database\\Factories\\User\\UserRgpdProfilFactory\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^PHPDoc tag @use has invalid type Database\\Factories\\User\\UserRgpdProfilFactory\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Type Database\\Factories\\User\\UserRgpdProfilFactory in generic type Illuminate\\Database\\Eloquent\\Factories\\HasFactory\<Database\\Factories\\User\\UserRgpdProfilFactory\> in PHPDoc tag @use is not subtype of template type TFactory of Illuminate\\Database\\Eloquent\\Factories\\Factory of trait Illuminate\\Database\\Eloquent\\Factories\\HasFactory\.$#'
+			identifier: generics.notSubtype
+			count: 1
+			path: app/Infrastructure/Database/Models/User/UserRgpdProfil.php
+
+		-
+			message: '#^Instanceof between App\\Domain\\Shared\\Events\\DomainEventInterface and App\\Domain\\Shared\\Events\\DomainEventInterface will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
+			count: 1
+			path: app/Infrastructure/Events/LaravelEventDispatcher.php
+
+		-
+			message: '#^Parameter \$id of class App\\Domain\\Cinema\\Entities\\Cinema constructor expects App\\Domain\\Cinema\\ValueObjects\\CinemaId, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/CinemaMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Cinema\\Cinema\:\:\$uuid \(string\) does not accept App\\Domain\\Cinema\\ValueObjects\\CinemaId\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/CinemaMapper.php
+
+		-
+			message: '#^Call to function is_string\(\) with array\<string\> will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/FilmMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Cinema\\Film\:\:\$date_sortie \(Illuminate\\Support\\Carbon\) does not accept DateTimeInterface\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/FilmMapper.php
+
+		-
+			message: '#^Variable \$realisateurs on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.variable
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/FilmMapper.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Shared\\ValueObjects\\Money\:\:getAmount\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/ReservationMapper.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Shared\\ValueObjects\\Money\:\:getDevise\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/ReservationMapper.php
+
+		-
+			message: '#^Call to an undefined static method App\\Domain\\Shared\\ValueObjects\\Devise\:\:EUR\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/ReservationMapper.php
+
+		-
+			message: '#^Missing parameter \$amountInCentimes \(int\) in call to App\\Domain\\Shared\\ValueObjects\\Money constructor\.$#'
+			identifier: argument.missing
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/ReservationMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Cinema\\Reservation\:\:\$date_expiration \(Illuminate\\Support\\Carbon\|null\) does not accept DateTime\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/ReservationMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Cinema\\Reservation\:\:\$date_reservation \(Illuminate\\Support\\Carbon\) does not accept DateTime\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/ReservationMapper.php
+
+		-
+			message: '#^Unknown parameter \$amount in call to App\\Domain\\Shared\\ValueObjects\\Money constructor\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: app/Infrastructure/Mappers/Cinema/ReservationMapper.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 4
+			path: app/Infrastructure/Mappers/Cinema/SalleMapper.php
+
+		-
+			message: '#^Parameter \#1 \$uuid of static method App\\Domain\\Employees\\ValueObjects\\IncidentId\:\:fromString\(\) expects string, int given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Infrastructure/Mappers/Employees/IncidentMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Employees\\Incident\:\:\$date_resolution \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeInterface\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/Employees/IncidentMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Employees\\Incident\:\:\$id \(int\) does not accept string\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/Employees/IncidentMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$code_confirmation\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$date_reservation\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$details_places\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$devise\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$email_confirmation\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$notes_client\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$prix_total_ht_centimes\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$prix_total_ttc_centimes\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$prix_unitaire_ht_centimes\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$seance_db_id\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$seance_uuid\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$taux_tva_basis_points\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$token_securite\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\:\:\$date_expiration \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeInterface\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/Reservations/ReservationMapper.php
+
+		-
+			message: '#^Cannot instantiate class App\\Domain\\Shared\\ValueObjects\\PhoneNumber via private constructor App\\Domain\\Shared\\ValueObjects\\PhoneNumber\:\:__construct\(\)\.$#'
+			identifier: new.privateConstructor
+			count: 1
+			path: app/Infrastructure/Mappers/User/UserProfilMapper.php
+
+		-
+			message: '#^Parameter \#1 \$laravelPhone of class App\\Domain\\Shared\\ValueObjects\\PhoneNumber constructor expects Propaganistas\\LaravelPhone\\PhoneNumber, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Infrastructure/Mappers/User/UserProfilMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Profiles\\UserProfil\:\:\$date_naissance \(Illuminate\\Support\\Carbon\|null\) does not accept DateTimeInterface\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/User/UserProfilMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Profiles\\UserProfil\:\:\$nom \(string\) does not accept App\\Domain\\Shared\\ValueObjects\\Nom\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/User/UserProfilMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Profiles\\UserProfil\:\:\$prenom \(string\) does not accept App\\Domain\\Shared\\ValueObjects\\Prenom\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/User/UserProfilMapper.php
+
+		-
+			message: '#^Property App\\Infrastructure\\Database\\Models\\Profiles\\UserProfil\:\:\$telephone \(string\|null\) does not accept App\\Domain\\Shared\\ValueObjects\\PhoneNumber\|null\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: app/Infrastructure/Mappers/User/UserProfilMapper.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Cinema\\ValueObjects\\CinemaId\:\:toString\(\)\.$#'
+			identifier: method.notFound
+			count: 15
+			path: app/Infrastructure/Persistence/PostgreSQL/IncidentRepository.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Cinema\\ValueObjects\\SalleId\:\:toString\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Infrastructure/Persistence/PostgreSQL/IncidentRepository.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Employees\\ValueObjects\\EmploiId\:\:toString\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Infrastructure/Persistence/PostgreSQL/IncidentRepository.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Employees\\ValueObjects\\IncidentId\:\:toString\(\)\.$#'
+			identifier: method.notFound
+			count: 3
+			path: app/Infrastructure/Persistence/PostgreSQL/IncidentRepository.php
+
+		-
+			message: '#^Call to an undefined static method App\\Infrastructure\\Mappers\\Employees\\IncidentMapper\:\:toPersistence\(\)\.$#'
+			identifier: staticMethod.notFound
+			count: 1
+			path: app/Infrastructure/Persistence/PostgreSQL/IncidentRepository.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 2
+			path: app/Infrastructure/Repositories/Cinema/EloquentCinemaRepository.php
+
+		-
+			message: '#^Missing parameter \$criteria \(App\\Domain\\Shared\\ValueObjects\\PaginationCriteria\) in call to App\\Domain\\Shared\\ValueObjects\\PaginatedCollection constructor\.$#'
+			identifier: argument.missing
+			count: 1
+			path: app/Infrastructure/Repositories/Cinema/EloquentReservationRepository.php
+
+		-
+			message: '#^Parameter \#1 \$aggregate of method App\\Infrastructure\\Repositories\\Cinema\\EloquentReservationRepository\:\:dispatchDomainEvents\(\) expects App\\Domain\\Shared\\Entities\\AggregateRoot, App\\Domain\\Cinema\\Entities\\Reservation given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Infrastructure/Repositories/Cinema/EloquentReservationRepository.php
+
+		-
+			message: '#^Unknown parameter \$currentPage in call to App\\Domain\\Shared\\ValueObjects\\PaginatedCollection constructor\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: app/Infrastructure/Repositories/Cinema/EloquentReservationRepository.php
+
+		-
+			message: '#^Unknown parameter \$perPage in call to App\\Domain\\Shared\\ValueObjects\\PaginatedCollection constructor\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: app/Infrastructure/Repositories/Cinema/EloquentReservationRepository.php
+
+		-
+			message: '#^Access to an undefined property App\\Infrastructure\\Database\\Models\\Cinema\\Salle\:\:\$cinema_nom\.$#'
+			identifier: property.notFound
+			count: 4
+			path: app/Infrastructure/Repositories/Cinema/EloquentSalleRepository.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: app/Infrastructure/Repositories/Cinema/EloquentSalleRepository.php
+
+		-
+			message: '#^Parameter \#1 \$callback of method Illuminate\\Database\\Eloquent\\Collection\<int,App\\Infrastructure\\Database\\Models\\Cinema\\Salle\>\:\:map\(\) contains unresolvable type\.$#'
+			identifier: argument.unresolvableType
+			count: 2
+			path: app/Infrastructure/Repositories/Cinema/EloquentSalleRepository.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between mixed and null will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 2
+			path: app/Infrastructure/Repositories/Cinema/EloquentSalleRepository.php
+
+		-
+			message: '#^Using nullsafe property access on non\-nullable type App\\Infrastructure\\Database\\Models\\Cinema\\Cinema\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Repositories/Cinema/EloquentSalleRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Repositories\\Cinema\\EloquentSeanceRepository\:\:findByIdsWithRelations\(\) should return array\<string, App\\Domain\\Cinema\\Entities\\Seance\> but returns array\<string, App\\Infrastructure\\Database\\Models\\Cinema\\Seance\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Infrastructure/Repositories/Cinema/EloquentSeanceRepository.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>cinema_nom" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Repositories/Public/MongoSeancePublicRepository.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>film_titre" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Repositories/Public/MongoSeancePublicRepository.php
+
+		-
+			message: '#^Expression on left side of \?\? is not nullable\.$#'
+			identifier: nullCoalesce.expr
+			count: 1
+			path: app/Infrastructure/Repositories/Reservations/EloquentReservationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Repositories\\Reservations\\EloquentReservationRepository\:\:findByIds\(\) should return array\<string, App\\Domain\\Reservations\\Entities\\Reservation\> but returns array\<string, App\\Infrastructure\\Database\\Models\\Reservations\\Reservation\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Infrastructure/Repositories/Reservations/EloquentReservationRepository.php
+
+		-
+			message: '#^Missing parameter \$criteria \(App\\Domain\\Shared\\ValueObjects\\PaginationCriteria\) in call to App\\Domain\\Shared\\ValueObjects\\PaginatedCollection constructor\.$#'
+			identifier: argument.missing
+			count: 1
+			path: app/Infrastructure/Repositories/Reservations/EloquentReservationRepository.php
+
+		-
+			message: '#^Unknown parameter \$currentPage in call to App\\Domain\\Shared\\ValueObjects\\PaginatedCollection constructor\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: app/Infrastructure/Repositories/Reservations/EloquentReservationRepository.php
+
+		-
+			message: '#^Unknown parameter \$perPage in call to App\\Domain\\Shared\\ValueObjects\\PaginatedCollection constructor\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: app/Infrastructure/Repositories/Reservations/EloquentReservationRepository.php
+
+		-
+			message: '#^Unknown parameter \$totalPages in call to App\\Domain\\Shared\\ValueObjects\\PaginatedCollection constructor\.$#'
+			identifier: argument.unknown
+			count: 1
+			path: app/Infrastructure/Repositories/Reservations/EloquentReservationRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Repositories\\User\\EloquentUserProfilRepository\:\:findByIds\(\) should return array\<string, App\\Domain\\User\\Entities\\UserProfil\> but returns array\<string, App\\Infrastructure\\Database\\Models\\Profiles\\UserProfil\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Infrastructure/Repositories/User/EloquentUserProfilRepository.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>email" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Repositories/Users/EloquentUserRepository.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>nom" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Repositories/Users/EloquentUserRepository.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>prenom" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Repositories/Users/EloquentUserRepository.php
+
+		-
+			message: '#^Using nullsafe property access "\?\-\>role" on left side of \?\? is unnecessary\. Use \-\> instead\.$#'
+			identifier: nullsafe.neverNull
+			count: 1
+			path: app/Infrastructure/Repositories/Users/EloquentUserRepository.php
+
+		-
+			message: '#^Method App\\Infrastructure\\Schemas\\MongoDB\\FilmReviewSchema\:\:distributionNotesStructure\(\) should return array\<string, int\> but returns array\<int, int\>\.$#'
+			identifier: return.type
+			count: 1
+			path: app/Infrastructure/Schemas/MongoDB/FilmReviewSchema.php
+
+		-
+			message: '#^Access to an undefined property App\\Domain\\Reservations\\Entities\\Reservation\:\:\$nombreBillets\.$#'
+			identifier: property.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant ALERTES on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant CINEMAS_PERFORMANCE on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant FILMS_PERFORMANCE on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant PLACES_DISPONIBLES on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\SeanceLiveSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant PLACES_RESERVEES on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\SeanceLiveSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant PLACES_VENDUES on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\SeanceLiveSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant RESERVATIONS_ACTIVES on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 2
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant REVENUS_JOUR on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 2
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant SEANCE_ID on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\SeanceLiveSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant TAUX_OCCUPATION_GLOBAL on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 2
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant TIMESTAMP on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 3
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant UPDATED_AT on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\SeanceLiveSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant UPDATED_AT on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Access to constant VENTES_JOUR on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 2
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Call to static method statsRealtimeStructure\(\) on an unknown class App\\Infrastructure\\Schemas\\MongoDB\\StatsSchema\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Parameter \#1 \$montantVente of method App\\Listeners\\MongoDB\\ReservationEventListener\:\:updateStatsRealtime\(\) expects float\|null, Money\\Money given\.$#'
+			identifier: argument.type
+			count: 1
+			path: app/Listeners/MongoDB/ReservationEventListener.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Reviews\\Events\\ReviewCreated\:\:getReview\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReviewEventListener.php
+
+		-
+			message: '#^Call to an undefined method App\\Domain\\Reviews\\Events\\ReviewCreated\:\:getTitreFilm\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Listeners/MongoDB/ReviewEventListener.php
+
+		-
+			message: '#^Static method App\\Infrastructure\\Schemas\\MongoDB\\FilmReviewSchema\:\:avisStructure\(\) invoked with 1 parameter, 0 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: app/Listeners/MongoDB/ReviewEventListener.php
+
+		-
+			message: '#^Static method App\\Infrastructure\\Schemas\\MongoDB\\FilmReviewSchema\:\:documentStructure\(\) invoked with 1 parameter, 0 required\.$#'
+			identifier: arguments.count
+			count: 1
+			path: app/Listeners/MongoDB/ReviewEventListener.php
+
+		-
+			message: '#^Class App\\Infrastructure\\Repositories\\Users\\EloquentEmployeRepository not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: app/Providers/AppServiceProvider.php
+
+		-
+			message: '#^Property App\\Providers\\DomainEventServiceProvider\:\:\$listen \(array\<class\-string, array\<int, class\-string\>\>\) does not accept default value of type array\<string, list\<string\>\>\.$#'
+			identifier: property.defaultValue
+			count: 1
+			path: app/Providers/DomainEventServiceProvider.php
+
+		-
+			message: '#^Call to an undefined method Faker\\Generator\:\:secondaryAddress\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: database/factories/Profiles/UserProfilFactory.php
+
+		-
+			message: '#^Parameter \#2 \$name of method MongoDB\\Laravel\\Schema\\Blueprint\:\:index\(\) expects string\|null, array\<string, int\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: database/migrations/mongodb/2024_01_01_000001_create_mongodb_collections.php
+
+		-
+			message: '#^Parameter \#2 \$name of method MongoDB\\Laravel\\Schema\\Blueprint\:\:index\(\) expects string\|null, array\<string, true\> given\.$#'
+			identifier: argument.type
+			count: 4
+			path: database/migrations/mongodb/2024_01_01_000001_create_mongodb_collections.php
+
+		-
+			message: '#^Call to function is_callable\(\) with Closure\(mixed\)\: int will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: database/seeders/Cinema/SeanceSeeder.php
+
+		-
+			message: '#^Offset ''description'' on array\{titre_poste\: ''Agent d\\''entretien'', description\: ''Nettoyage et…'', categorie\: ''ENTRETIEN'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PARTIEL'', salaire_min_ht_centimes\: 120000, salaire_max_ht_centimes\: 150000, \.\.\.\}\|array\{titre_poste\: ''Agent de sécurité'', description\: ''Surveillance et…'', categorie\: ''SECURITE'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 170000, salaire_max_ht_centimes\: 200000, \.\.\.\}\|array\{titre_poste\: ''Caissier'', description\: ''Accueil des clients…'', categorie\: ''ACCUEIL_BILLETTERIE'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 150000, salaire_max_ht_centimes\: 180000, \.\.\.\}\|array\{titre_poste\: ''Directeur'', description\: ''Direction générale…'', categorie\: ''DIRECTION'', niveau\: ''DIRECTEUR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 450000, salaire_max_ht_centimes\: 600000, \.\.\.\}\|array\{titre_poste\: ''Manager'', description\: ''Encadrement d…'', categorie\: ''DIRECTION'', niveau\: ''SENIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 300000, salaire_max_ht_centimes\: 400000, \.\.\.\}\|array\{titre_poste\: ''Projectionniste'', description\: ''Gestion technique…'', categorie\: ''PROJECTION'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 200000, salaire_max_ht_centimes\: 250000, \.\.\.\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: database/seeders/Employees/EmploisSeeder.php
+
+		-
+			message: '#^Offset ''heure_debut_type'' on array\{titre_poste\: ''Agent d\\''entretien'', description\: ''Nettoyage et…'', categorie\: ''ENTRETIEN'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PARTIEL'', salaire_min_ht_centimes\: 120000, salaire_max_ht_centimes\: 150000, \.\.\.\}\|array\{titre_poste\: ''Agent de sécurité'', description\: ''Surveillance et…'', categorie\: ''SECURITE'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 170000, salaire_max_ht_centimes\: 200000, \.\.\.\}\|array\{titre_poste\: ''Caissier'', description\: ''Accueil des clients…'', categorie\: ''ACCUEIL_BILLETTERIE'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 150000, salaire_max_ht_centimes\: 180000, \.\.\.\}\|array\{titre_poste\: ''Directeur'', description\: ''Direction générale…'', categorie\: ''DIRECTION'', niveau\: ''DIRECTEUR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 450000, salaire_max_ht_centimes\: 600000, \.\.\.\}\|array\{titre_poste\: ''Manager'', description\: ''Encadrement d…'', categorie\: ''DIRECTION'', niveau\: ''SENIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 300000, salaire_max_ht_centimes\: 400000, \.\.\.\}\|array\{titre_poste\: ''Projectionniste'', description\: ''Gestion technique…'', categorie\: ''PROJECTION'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 200000, salaire_max_ht_centimes\: 250000, \.\.\.\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: database/seeders/Employees/EmploisSeeder.php
+
+		-
+			message: '#^Offset ''heure_fin_type'' on array\{titre_poste\: ''Agent d\\''entretien'', description\: ''Nettoyage et…'', categorie\: ''ENTRETIEN'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PARTIEL'', salaire_min_ht_centimes\: 120000, salaire_max_ht_centimes\: 150000, \.\.\.\}\|array\{titre_poste\: ''Agent de sécurité'', description\: ''Surveillance et…'', categorie\: ''SECURITE'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 170000, salaire_max_ht_centimes\: 200000, \.\.\.\}\|array\{titre_poste\: ''Caissier'', description\: ''Accueil des clients…'', categorie\: ''ACCUEIL_BILLETTERIE'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 150000, salaire_max_ht_centimes\: 180000, \.\.\.\}\|array\{titre_poste\: ''Directeur'', description\: ''Direction générale…'', categorie\: ''DIRECTION'', niveau\: ''DIRECTEUR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 450000, salaire_max_ht_centimes\: 600000, \.\.\.\}\|array\{titre_poste\: ''Manager'', description\: ''Encadrement d…'', categorie\: ''DIRECTION'', niveau\: ''SENIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 300000, salaire_max_ht_centimes\: 400000, \.\.\.\}\|array\{titre_poste\: ''Projectionniste'', description\: ''Gestion technique…'', categorie\: ''PROJECTION'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 200000, salaire_max_ht_centimes\: 250000, \.\.\.\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: database/seeders/Employees/EmploisSeeder.php
+
+		-
+			message: '#^Offset ''travail_soiree'' on array\{titre_poste\: ''Agent d\\''entretien'', description\: ''Nettoyage et…'', categorie\: ''ENTRETIEN'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PARTIEL'', salaire_min_ht_centimes\: 120000, salaire_max_ht_centimes\: 150000, \.\.\.\}\|array\{titre_poste\: ''Agent de sécurité'', description\: ''Surveillance et…'', categorie\: ''SECURITE'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 170000, salaire_max_ht_centimes\: 200000, \.\.\.\}\|array\{titre_poste\: ''Caissier'', description\: ''Accueil des clients…'', categorie\: ''ACCUEIL_BILLETTERIE'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 150000, salaire_max_ht_centimes\: 180000, \.\.\.\}\|array\{titre_poste\: ''Directeur'', description\: ''Direction générale…'', categorie\: ''DIRECTION'', niveau\: ''DIRECTEUR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 450000, salaire_max_ht_centimes\: 600000, \.\.\.\}\|array\{titre_poste\: ''Manager'', description\: ''Encadrement d…'', categorie\: ''DIRECTION'', niveau\: ''SENIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 300000, salaire_max_ht_centimes\: 400000, \.\.\.\}\|array\{titre_poste\: ''Projectionniste'', description\: ''Gestion technique…'', categorie\: ''PROJECTION'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 200000, salaire_max_ht_centimes\: 250000, \.\.\.\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: database/seeders/Employees/EmploisSeeder.php
+
+		-
+			message: '#^Offset ''travail_weekend'' on array\{titre_poste\: ''Agent d\\''entretien'', description\: ''Nettoyage et…'', categorie\: ''ENTRETIEN'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PARTIEL'', salaire_min_ht_centimes\: 120000, salaire_max_ht_centimes\: 150000, \.\.\.\}\|array\{titre_poste\: ''Agent de sécurité'', description\: ''Surveillance et…'', categorie\: ''SECURITE'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 170000, salaire_max_ht_centimes\: 200000, \.\.\.\}\|array\{titre_poste\: ''Caissier'', description\: ''Accueil des clients…'', categorie\: ''ACCUEIL_BILLETTERIE'', niveau\: ''JUNIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 150000, salaire_max_ht_centimes\: 180000, \.\.\.\}\|array\{titre_poste\: ''Directeur'', description\: ''Direction générale…'', categorie\: ''DIRECTION'', niveau\: ''DIRECTEUR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 450000, salaire_max_ht_centimes\: 600000, \.\.\.\}\|array\{titre_poste\: ''Manager'', description\: ''Encadrement d…'', categorie\: ''DIRECTION'', niveau\: ''SENIOR'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 300000, salaire_max_ht_centimes\: 400000, \.\.\.\}\|array\{titre_poste\: ''Projectionniste'', description\: ''Gestion technique…'', categorie\: ''PROJECTION'', niveau\: ''CONFIRME'', type_contrat\: ''CDI'', temps_travail\: ''TEMPS_PLEIN'', salaire_min_ht_centimes\: 200000, salaire_max_ht_centimes\: 250000, \.\.\.\} on left side of \?\? always exists and is not nullable\.$#'
+			identifier: nullCoalesce.offset
+			count: 1
+			path: database/seeders/Employees/EmploisSeeder.php

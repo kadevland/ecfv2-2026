@@ -1,0 +1,28 @@
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ecf-postgres
+    container_name: ${POSTGRES_CONTAINER_NAME:-cinephoria.postgres}
+    restart: unless-stopped
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-cinephoria}
+      - POSTGRES_USER=${POSTGRES_USER:-cinephoria_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_ROOT_PASSWORD=${POSTGRES_ROOT_PASSWORD}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ../../../docker-volumes/postgresql:/var/lib/postgresql/data/pgdata
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    networks:
+      - ecf_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-cinephoria_user} -d ${POSTGRES_DB:-cinephoria}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+# Utilise le CMD du Dockerfile (start-postgres-pgbouncer.sh)

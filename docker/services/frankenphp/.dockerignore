@@ -1,0 +1,23 @@
+# Exclure les dossiers Docker pour montage volumes
+docker/
+docker-volumes/
+.git/
+.github/
+.vscode/
+.idea/
+*.log
+.DS_Store
+Thumbs.db
+
+# Fichiers de build temporaires
+/frankenphp
+frankenphp-*
+
+# Dossiers Claude
+claude/
+
+# Dependencies - installées dans le container
+vendor/
+node_modules/
+composer.lock
+package-lock.json

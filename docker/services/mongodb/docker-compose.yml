@@ -1,0 +1,22 @@
+services:
+  mongodb:
+    image: mongo:8.0.9
+    container_name: ${MONGODB_CONTAINER_NAME:-cinephoria.mongodb}
+    restart: unless-stopped
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGODB_ROOT_PASSWORD}
+      - MONGO_INITDB_DATABASE=${MONGODB_DATABASE:-cinephoria_read}
+    volumes:
+      - ../../../docker-volumes/mongodb:/data/db
+    networks:
+      - ecf_network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.runCommand('ping').ok", "--quiet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    command: >
+      mongod
+      --bind_ip_all

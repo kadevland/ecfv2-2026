@@ -1,0 +1,31 @@
+# Docker Compose - Cinéphoria ECF
+# Configuration de base pour production
+# Usage: docker compose up (prod) ou avec overrides pour dev
+
+networks:
+  ecf_network:
+    driver: bridge
+    name: ${NETWORK_NAME:-cinephoria_network}
+
+volumes:
+  postgres_data:
+    driver: local
+  mongodb_data:
+    driver: local
+  redis_data:
+    driver: local
+  # Volumes de cache pour accélérer les builds
+  composer_cache:
+    driver: local
+    name: ${NETWORK_NAME:-cinephoria_network}_composer_cache
+  npm_cache:
+    driver: local
+    name: ${NETWORK_NAME:-cinephoria_network}_npm_cache
+
+include:
+  - services/frankenphp/docker-compose.yml
+  - services/postgresql/docker-compose.yml
+  - services/pgbouncer/docker-compose.yml
+  - services/mongodb/docker-compose.yml
+  - services/redis/docker-compose.yml
+  - services/tools/docker-compose.yml

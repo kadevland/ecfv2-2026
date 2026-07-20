@@ -1,0 +1,190 @@
+/* EasyMDE Markdown Editor - Thème personnalisé Preline UI */
+
+/* Container principal */
+.EasyMDEContainer {
+    @apply rounded-lg border-gray-300 shadow-sm;
+    border: 1px solid #d1d5db;
+}
+
+/* Zone d'édition */
+.EasyMDEContainer .CodeMirror {
+    @apply bg-white text-gray-900 rounded-lg;
+    font-family: inherit;
+    border: none;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* Focus state */
+.EasyMDEContainer .CodeMirror-focused {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 1px #3b82f6;
+}
+
+/* Toolbar */
+.EasyMDEContainer .editor-toolbar {
+    @apply bg-gray-50 border-gray-200 rounded-t-lg;
+    background-color: #f9fafb;
+    border-bottom: 1px solid #d1d5db;
+}
+
+.EasyMDEContainer .editor-toolbar button {
+    @apply text-gray-700 hover:bg-gray-200;
+    color: #374151;
+    border: none;
+}
+
+.EasyMDEContainer .editor-toolbar button.active,
+.EasyMDEContainer .editor-toolbar button:hover {
+    @apply bg-gray-200;
+    background-color: #e5e7eb;
+}
+
+.EasyMDEContainer .editor-toolbar i.separator {
+    @apply border-gray-300;
+    border-color: #d1d5db;
+}
+
+/* Status bar */
+.EasyMDEContainer .editor-statusbar {
+    @apply bg-gray-50 text-gray-600 text-xs rounded-b-lg;
+    background-color: #f9fafb;
+    color: #6b7280;
+    border-top: 1px solid #d1d5db;
+}
+
+/* Preview panel */
+.EasyMDEContainer .editor-preview {
+    @apply bg-white text-gray-900 p-4;
+    background-color: #ffffff;
+    color: #111827;
+}
+
+.EasyMDEContainer .editor-preview-side {
+    @apply bg-white text-gray-900 p-4 border-l border-gray-200;
+    background-color: #ffffff;
+    color: #111827;
+    border-left-color: #d1d5db;
+}
+
+/* Preview content styling */
+.EasyMDEContainer .editor-preview h1,
+.EasyMDEContainer .editor-preview-side h1 {
+    @apply text-2xl font-bold mb-4 mt-6;
+    color: #111827;
+}
+
+.EasyMDEContainer .editor-preview h2,
+.EasyMDEContainer .editor-preview-side h2 {
+    @apply text-xl font-semibold mb-3 mt-6;
+    color: #1f2937;
+}
+
+.EasyMDEContainer .editor-preview h3,
+.EasyMDEContainer .editor-preview-side h3 {
+    @apply text-lg font-semibold mb-2 mt-4;
+    color: #1f2937;
+}
+
+.EasyMDEContainer .editor-preview ul,
+.EasyMDEContainer .editor-preview-side ul {
+    @apply list-disc list-inside space-y-1 mb-4;
+}
+
+.EasyMDEContainer .editor-preview ol,
+.EasyMDEContainer .editor-preview-side ol {
+    @apply list-decimal list-inside space-y-1 mb-4;
+}
+
+.EasyMDEContainer .editor-preview blockquote,
+.EasyMDEContainer .editor-preview-side blockquote {
+    @apply border-l-4 border-gray-300 dark:border-neutral-600 pl-4 italic text-gray-700 dark:text-gray-300 my-4;
+}
+
+.EasyMDEContainer .editor-preview code,
+.EasyMDEContainer .editor-preview-side code {
+    @apply px-1 py-0.5 bg-gray-100 dark:bg-neutral-800 rounded text-sm font-mono text-red-600 dark:text-red-400;
+}
+
+.EasyMDEContainer .editor-preview pre,
+.EasyMDEContainer .editor-preview-side pre {
+    @apply bg-gray-100 dark:bg-neutral-800 p-3 rounded overflow-x-auto mb-4;
+}
+
+.EasyMDEContainer .editor-preview pre code,
+.EasyMDEContainer .editor-preview-side pre code {
+    @apply bg-transparent p-0 text-gray-900 dark:text-gray-100;
+}
+
+.EasyMDEContainer .editor-preview table,
+.EasyMDEContainer .editor-preview-side table {
+    @apply w-full border-collapse mb-4;
+}
+
+.EasyMDEContainer .editor-preview table th,
+.EasyMDEContainer .editor-preview-side table th {
+    @apply bg-gray-100 dark:bg-neutral-800 font-semibold text-left p-2 border border-gray-300 dark:border-neutral-600;
+}
+
+.EasyMDEContainer .editor-preview table td,
+.EasyMDEContainer .editor-preview-side table td {
+    @apply p-2 border border-gray-300 dark:border-neutral-600;
+}
+
+.EasyMDEContainer .editor-preview p,
+.EasyMDEContainer .editor-preview-side p {
+    @apply mb-4;
+}
+
+.EasyMDEContainer .editor-preview a,
+.EasyMDEContainer .editor-preview-side a {
+    @apply text-blue-600 dark:text-blue-400 hover:underline;
+}
+
+/* Fullscreen mode */
+.EasyMDEContainer.EasyMDEContainer--fullscreen {
+    @apply fixed inset-0 z-50 bg-white dark:bg-neutral-900;
+}
+
+.EasyMDEContainer.EasyMDEContainer--fullscreen .editor-toolbar {
+    @apply rounded-none;
+}
+
+/* Side by side preview */
+.EasyMDEContainer .CodeMirror-sided {
+    @apply w-1/2;
+}
+
+/* Cursor and selection */
+.EasyMDEContainer .CodeMirror-cursor {
+    border-left: 1px solid #111827;
+}
+
+.EasyMDEContainer .CodeMirror-selected {
+    background-color: rgba(59, 130, 246, 0.15);
+}
+
+/* Line numbers (if enabled) */
+.EasyMDEContainer .CodeMirror-linenumber {
+    color: #9ca3af;
+}
+
+/* Scrollbar styling */
+.EasyMDEContainer .CodeMirror-vscrollbar,
+.EasyMDEContainer .CodeMirror-hscrollbar {
+    background-color: #f3f4f6;
+}
+
+.EasyMDEContainer .CodeMirror-scrollbar-filler {
+    background-color: #f3f4f6;
+}
+
+/* Placeholder text */
+.EasyMDEContainer .CodeMirror-empty.CodeMirror-focused::before {
+    color: #9ca3af;
+}
+
+/* Error state */
+.EasyMDEContainer.has-error .CodeMirror {
+    @apply border-red-500 focus:ring-red-500;
+}

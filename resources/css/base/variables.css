@@ -1,0 +1,33 @@
+@theme {
+    /* Typography - Cinéphoria Design System */
+    --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+
+    --font-serif: "Playfair Display", ui-serif, Georgia, Cambria,
+        "Times New Roman", Times, serif;
+
+    --font-cinema-title: "Playfair Display", serif;
+    --font-cinema-body: "Inter", sans-serif;
+    --font-admin-interface: "Inter", sans-serif;
+
+    /* Cinéphoria Design System - From wireframes specs */
+    --color-cinema-black: #0a0a0a;
+    --color-cinema-gold: #d4af37;
+    --color-cinema-red: #8b0000;
+    --color-cinema-gold-light: #f4e68a;
+    --color-cinema-red-light: #dc2626;
+
+    /* Admin Theme */
+    --color-admin-primary: #1f2937;
+    --color-admin-secondary: #6b7280;
+    --color-admin-accent: #3b82f6;
+    --color-admin-success: #10b981;
+    --color-admin-warning: #f59e0b;
+    --color-admin-error: #ef4444;
+
+    /* Accessibility Variables */
+    --accessibility-transition: all 0.3s ease;
+    --accessibility-animation: inherit;
+    --accessibility-transform: inherit;
+}

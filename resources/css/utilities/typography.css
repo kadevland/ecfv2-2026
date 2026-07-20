@@ -1,0 +1,180 @@
+/* ====================================================================
+   TYPOGRAPHY UTILITIES - CINÉPHORIA
+   Classes utilitaires pour fonts selon la charte graphique
+   ==================================================================== */
+
+/* Base Font Families */
+.font-cinema-title {
+    font-family: var(--font-cinema-title);
+}
+
+.font-cinema-body {
+    font-family: var(--font-cinema-body);
+}
+
+.font-admin {
+    font-family: var(--font-admin-interface);
+}
+
+/* Semantic Typography Classes */
+.font-title {
+    font-family: var(--font-cinema-title);
+    font-weight: 700;
+}
+
+.font-subtitle {
+    font-family: var(--font-cinema-title);
+    font-weight: 500;
+}
+
+.font-heading {
+    font-family: var(--font-cinema-title);
+    font-weight: 600;
+}
+
+.font-body {
+    font-family: var(--font-cinema-body);
+    font-weight: 400;
+}
+
+.font-interface {
+    font-family: var(--font-admin-interface);
+    font-weight: 500;
+}
+
+/* Cinema Theme Typography */
+.cinema-theme .font-logo {
+    font-family: var(--font-cinema-title);
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--color-cinema-gold);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.cinema-theme .font-hero-title {
+    font-family: var(--font-cinema-title);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: white;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.cinema-theme .font-section-title {
+    font-family: var(--font-cinema-title);
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--color-cinema-gold);
+}
+
+.cinema-theme .font-card-title {
+    font-family: var(--font-cinema-title);
+    font-weight: 600;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.cinema-theme .font-nav {
+    font-family: var(--font-cinema-body);
+    font-weight: 500;
+    color: white;
+}
+
+.cinema-theme .font-body-text {
+    font-family: var(--font-cinema-body);
+    font-weight: 400;
+    color: #d1d5db;
+    line-height: 1.6;
+}
+
+/* Admin Theme Typography */
+.admin-theme .font-dashboard-title {
+    font-family: var(--font-admin-interface);
+    font-weight: 700;
+    font-size: 2rem;
+    color: #1f2937;
+}
+
+.admin-theme .font-page-title {
+    font-family: var(--font-admin-interface);
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #1f2937;
+}
+
+.admin-theme .font-section-title {
+    font-family: var(--font-admin-interface);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #374151;
+}
+
+.admin-theme .font-table-header {
+    font-family: var(--font-admin-interface);
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.admin-theme .font-nav {
+    font-family: var(--font-admin-interface);
+    font-weight: 500;
+    color: #6b7280;
+}
+
+.admin-theme .font-body-text {
+    font-family: var(--font-admin-interface);
+    font-weight: 400;
+    color: #4b5563;
+    line-height: 1.5;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .cinema-theme .font-hero-title {
+        font-size: 2.5rem;
+    }
+
+    .cinema-theme .font-section-title {
+        font-size: 1.75rem;
+    }
+
+    .admin-theme .font-dashboard-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Utility Classes for Font Weights */
+.font-weight-light {
+    font-weight: 300;
+}
+
+.font-weight-normal {
+    font-weight: 400;
+}
+
+.font-weight-medium {
+    font-weight: 500;
+}
+
+.font-weight-semibold {
+    font-weight: 600;
+}
+
+.font-weight-bold {
+    font-weight: 700;
+}
+
+/* Text Shadows for Cinema Theme */
+.text-shadow-cinema {
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.text-shadow-hero {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+}
+
+.text-shadow-subtle {
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Support\Str;
 
 return [
@@ -129,7 +131,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        Str::slug((string) env('APP_NAME', 'laravel')).'-session'
+        Str::slug(env('APP_NAME', 'laravel')) . '-session'
     ),
 
     /*
@@ -152,7 +154,7 @@ return [
     |
     | This value determines the domain and subdomains the session cookie is
     | available to. By default, the cookie will be available to the root
-    | domain without subdomains. Typically, this shouldn't be changed.
+    | domain and all subdomains. Typically, this shouldn't be changed.
     |
     */
 

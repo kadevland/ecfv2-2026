@@ -1,0 +1,176 @@
+/* PHPFlasher Notifications - Contextual Themes */
+/* Utilise le système de classes contextuelles html.admin / html.cinema */
+
+/* === ADMIN THEME === */
+html.admin {
+  --flasher-primary: var(--color-admin-accent);
+  --flasher-success: var(--color-admin-success);
+  --flasher-warning: var(--color-admin-warning);
+  --flasher-error: var(--color-admin-error);
+  --flasher-bg: #ffffff;
+  --flasher-text: var(--color-admin-primary);
+  --flasher-font: var(--font-admin-interface);
+  --flasher-radius: 8px;
+  --flasher-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* === CINEMA THEME === */
+html.cinema {
+  --flasher-primary: var(--color-cinema-gold);
+  --flasher-success: var(--color-admin-success);
+  --flasher-warning: var(--color-cinema-gold-light);
+  --flasher-error: var(--color-cinema-red);
+  --flasher-bg: var(--color-cinema-black);
+  --flasher-text: var(--color-cinema-gold-light);
+  --flasher-font: var(--font-cinema-body);
+  --flasher-radius: 12px;
+  --flasher-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+}
+
+/* === NOTYF NOTIFICATIONS STYLES === */
+.notyf__toast {
+  background: var(--flasher-bg) !important;
+  color: var(--flasher-text) !important;
+  font-family: var(--flasher-font) !important;
+  border-radius: var(--flasher-radius) !important;
+  box-shadow: var(--flasher-shadow) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.notyf__toast--success {
+  background: var(--flasher-success) !important;
+  color: white !important;
+}
+
+.notyf__toast--error {
+  background: var(--flasher-error) !important;
+  color: white !important;
+}
+
+.notyf__toast--warning {
+  background: var(--flasher-warning) !important;
+  color: var(--flasher-text) !important;
+}
+
+.notyf__icon {
+  color: inherit !important;
+}
+
+/* Position responsive pour mobile */
+@media (max-width: 768px) {
+  .notyf {
+    padding: 10px !important;
+  }
+
+  .notyf__toast {
+    margin-bottom: 8px !important;
+  }
+}
+
+/* === SWEETALERT2 CONTEXTUAL THEMES === */
+
+/* ADMIN THEME */
+html.admin .swal2-popup {
+  font-family: var(--font-admin-interface) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1) !important;
+}
+
+html.admin .swal2-title {
+  color: var(--color-admin-primary) !important;
+  font-weight: 600 !important;
+}
+
+html.admin .swal2-content {
+  color: var(--color-admin-secondary) !important;
+}
+
+html.admin .swal2-confirm {
+  background-color: var(--color-admin-accent) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  padding: 12px 24px !important;
+}
+
+html.admin .swal2-cancel {
+  background-color: var(--color-admin-secondary) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  padding: 12px 24px !important;
+}
+
+html.admin .swal2-icon.swal2-warning {
+  border-color: var(--color-admin-warning) !important;
+  color: var(--color-admin-warning) !important;
+}
+
+html.admin .swal2-icon.swal2-error {
+  border-color: var(--color-admin-error) !important;
+  color: var(--color-admin-error) !important;
+}
+
+/* CINEMA THEME */
+html.cinema .swal2-popup {
+  font-family: var(--font-cinema-body) !important;
+  background: var(--color-cinema-black) !important;
+  color: var(--color-cinema-gold-light) !important;
+  border: 2px solid var(--color-cinema-gold) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.1) !important;
+}
+
+html.cinema .swal2-title {
+  color: var(--color-cinema-gold) !important;
+  font-family: var(--font-cinema-title) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3) !important;
+}
+
+html.cinema .swal2-content {
+  color: var(--color-cinema-gold-light) !important;
+}
+
+html.cinema .swal2-confirm {
+  background: linear-gradient(135deg, var(--color-cinema-gold), var(--color-cinema-gold-light)) !important;
+  color: var(--color-cinema-black) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  padding: 12px 24px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+}
+
+html.cinema .swal2-cancel {
+  background-color: transparent !important;
+  color: var(--color-cinema-gold) !important;
+  border: 2px solid var(--color-cinema-gold) !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  padding: 10px 22px !important;
+}
+
+html.cinema .swal2-cancel:hover {
+  background-color: var(--color-cinema-gold) !important;
+  color: var(--color-cinema-black) !important;
+}
+
+html.cinema .swal2-icon.swal2-warning {
+  border-color: var(--color-cinema-gold) !important;
+  color: var(--color-cinema-gold) !important;
+}
+
+html.cinema .swal2-icon.swal2-error {
+  border-color: var(--color-cinema-red) !important;
+  color: var(--color-cinema-red) !important;
+}
+
+html.cinema .swal2-icon.swal2-question {
+  border-color: var(--color-cinema-gold) !important;
+  color: var(--color-cinema-gold) !important;
+}
+
+/* Overlay plus sombre pour le cinéma */
+html.cinema .swal2-container.swal2-backdrop-show {
+  background: rgba(0, 0, 0, 0.8) !important;
+}

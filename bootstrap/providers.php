@@ -1,7 +1,12 @@
 <?php
 
-use App\Providers\AppServiceProvider;
+declare(strict_types=1);
 
 return [
-    AppServiceProvider::class,
+    App\Providers\AppServiceProvider::class,
+    App\Providers\AuthServiceProvider::class,
+    App\Providers\BusServiceProvider::class,
+    App\Providers\DomainEventServiceProvider::class,
+    App\Providers\HorizonServiceProvider::class,
+    App\Providers\ValidationServiceProvider::class,
 ];

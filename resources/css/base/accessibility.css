@@ -1,0 +1,286 @@
+/* ====================================================================
+   ACCESSIBILITY MODES
+   ==================================================================== */
+
+/* Standard Mode (default) */
+.accessibility-standard {
+    /* Variables déjà définies dans @theme */
+}
+
+/* High Contrast Mode */
+.accessibility-high-contrast {
+    --color-cinema-black: #000000;
+    --color-cinema-gold: #ffff00;
+    --color-cinema-red: #ff0000;
+    --color-cinema-gold-light: #ffff99;
+    --color-cinema-red-light: #ff6666;
+
+    /* Admin high contrast */
+    --color-admin-primary: #0000ff;
+    --color-admin-accent: #0000ff;
+    --color-admin-success: #00ff00;
+    --color-admin-warning: #ffff00;
+    --color-admin-error: #ff0000;
+}
+
+.accessibility-high-contrast * {
+    /* Force higher contrast borders */
+    border-color: currentColor !important;
+}
+
+.accessibility-high-contrast img {
+    /* High contrast filter for images */
+    filter: contrast(150%) brightness(110%);
+}
+
+/* Dyslexia Mode */
+.accessibility-dyslexia {
+    --font-sans: "OpenDyslexic", "Comic Sans MS", Arial, sans-serif;
+    --accessibility-font-size: 1.1em;
+    --accessibility-line-height: 1.6;
+    --accessibility-letter-spacing: 0.05em;
+    --accessibility-word-spacing: 0.1em;
+}
+
+.accessibility-dyslexia * {
+    font-family: var(--font-sans) !important;
+    font-size: var(--accessibility-font-size) !important;
+    line-height: var(--accessibility-line-height) !important;
+    letter-spacing: var(--accessibility-letter-spacing) !important;
+    word-spacing: var(--accessibility-word-spacing) !important;
+}
+
+.accessibility-dyslexia p,
+.accessibility-dyslexia div,
+.accessibility-dyslexia span {
+    /* Éviter la justification pour la dyslexie */
+    text-align: left !important;
+}
+
+/* Low Vision Mode */
+.accessibility-low-vision {
+    --accessibility-font-size: 1.25em;
+    --accessibility-line-height: 1.8;
+    --accessibility-letter-spacing: 0.02em;
+}
+
+.accessibility-low-vision * {
+    font-size: var(--accessibility-font-size) !important;
+    line-height: var(--accessibility-line-height) !important;
+    letter-spacing: var(--accessibility-letter-spacing) !important;
+}
+
+.accessibility-low-vision button,
+.accessibility-low-vision input,
+.accessibility-low-vision select,
+.accessibility-low-vision textarea {
+    /* Éléments interactifs plus gros */
+    min-height: 48px !important;
+    padding: 12px 16px !important;
+}
+
+.accessibility-low-vision .seat {
+    /* Sièges plus gros dans le SeatMap */
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 14px !important;
+}
+
+/* Motion Reduced Mode */
+.accessibility-motion-reduced,
+.accessibility-motion-reduced * {
+    /* Supprimer toutes les animations */
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    transform: none !important;
+}
+
+.accessibility-motion-reduced .animate-spin,
+.accessibility-motion-reduced .animate-bounce,
+.accessibility-motion-reduced .animate-pulse,
+.accessibility-motion-reduced .animate-ping {
+    animation: none !important;
+}
+
+.accessibility-motion-reduced [x-transition],
+.accessibility-motion-reduced [x-show],
+.accessibility-motion-reduced .transition-all,
+.accessibility-motion-reduced .transition-colors,
+.accessibility-motion-reduced .transition-opacity,
+.accessibility-motion-reduced .transition-transform {
+    transition: none !important;
+}
+
+.accessibility-motion-reduced .hover\:scale-105:hover,
+.accessibility-motion-reduced .hover\:scale-110:hover,
+.accessibility-motion-reduced .group-hover\:scale-105,
+.accessibility-motion-reduced .group-hover\:scale-110 {
+    transform: none !important;
+}
+
+/* ====================================================================
+   ACCESSIBILITY UTILITIES
+   ==================================================================== */
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* Skip Links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-cinema-gold);
+    color: var(--color-cinema-black);
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 9999;
+    font-weight: 600;
+    font-size: 14px;
+    border: 2px solid transparent;
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: none;
+    border-color: var(--color-cinema-black);
+}
+
+/* Focus Visible Enhancement */
+*:focus-visible {
+    outline: 2px solid var(--color-cinema-gold);
+    outline-offset: 2px;
+}
+
+.accessibility-high-contrast *:focus-visible {
+    outline: 3px solid #ffff00;
+    outline-offset: 2px;
+}
+
+/* High Contrast Focus for Admin */
+.admin-theme.accessibility-high-contrast *:focus-visible {
+    outline: 3px solid #0000ff;
+    outline-offset: 2px;
+}
+
+/* ====================================================================
+   PREFERS-REDUCED-MOTION (Système)
+   ==================================================================== */
+
+/* Respecter les préférences système */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
+
+    .animate-spin,
+    .animate-bounce,
+    .animate-pulse,
+    .animate-ping {
+        animation: none !important;
+    }
+}
+
+/* ====================================================================
+   PREFERS-CONTRAST (Système)
+   ==================================================================== */
+
+@media (prefers-contrast: high) {
+    :root {
+        --color-cinema-gold: #ffff00;
+        --color-cinema-red: #ff0000;
+        --color-admin-accent: #0000ff;
+    }
+}
+
+/* ====================================================================
+   COMPOSANTS ACCESSIBLES SPÉCIFIQUES
+   ==================================================================== */
+
+/* SeatMap accessible */
+.seat[role="checkbox"] {
+    position: relative;
+}
+
+.seat[role="checkbox"]:focus-visible {
+    outline: 3px solid var(--color-cinema-gold);
+    outline-offset: 2px;
+    z-index: 10;
+}
+
+.accessibility-high-contrast .seat[role="checkbox"]:focus-visible {
+    outline: 3px solid #ffff00;
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+}
+
+/* Toast/Alert accessibles */
+[role="alert"],
+[aria-live] {
+    /* S'assurer que les annonces sont visibles */
+    position: relative;
+}
+
+/* Modal accessible */
+[role="dialog"][aria-modal="true"] {
+    /* Focus trap styling */
+    isolation: isolate;
+}
+
+/* Navigation accessible */
+[role="navigation"] a:focus-visible,
+[role="menuitem"]:focus-visible {
+    outline: 2px solid var(--color-cinema-gold);
+    outline-offset: 2px;
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* ====================================================================
+   PRINT STYLES ACCESSIBLES
+   ==================================================================== */
+
+@media print {
+    .accessibility-toggle,
+    .skip-link,
+    [aria-hidden="true"] {
+        display: none !important;
+    }
+
+    * {
+        background: white !important;
+        color: black !important;
+    }
+
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+}

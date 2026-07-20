@@ -1,0 +1,481 @@
+{
+  "cinemas": [
+    {
+      "nom": "Cinéphoria Paris République",
+      "pays": "FR",
+      "rue": "12 Boulevard de la République",
+      "ville": "Paris",
+      "code_postal": "75011",
+      "telephone": "+33 1 42 83 45 67",
+      "email": "paris.republique@cinephoria.fr",
+      "description": "Cinema moderne au cœur du 11ème arrondissement avec 8 salles équipées des dernières technologies",
+      "est_actif": true,
+      "latitude": 48.8566,
+      "longitude": 2.3522,
+      "salles": [
+        {
+          "nom": "Salle République",
+          "capacite_totale": 280,
+          "nombre_rangees": 14,
+          "places_par_rangee": 20,
+          "places_standard": 270,
+          "places_pmr": 10,
+          "qualite_projection": ["4K", "IMAX"],
+          "qualite_sonore": ["DOLBY_ATMOS"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Bastille",
+          "capacite_totale": 220,
+          "nombre_rangees": 12,
+          "places_par_rangee": 18,
+          "places_standard": 210,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Marais",
+          "capacite_totale": 150,
+          "nombre_rangees": 10,
+          "places_par_rangee": 15,
+          "places_standard": 145,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Oberkampf",
+          "capacite_totale": 80,
+          "nombre_rangees": 8,
+          "places_par_rangee": 10,
+          "places_standard": 75,
+          "places_pmr": 5,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        }
+      ]
+    },
+    {
+      "nom": "Cinéphoria Lyon Bellecour",
+      "pays": "FR",
+      "rue": "25 Place Bellecour",
+      "ville": "Lyon",
+      "code_postal": "69002",
+      "telephone": "+33 4 72 89 12 34",
+      "email": "lyon.bellecour@cinephoria.fr",
+      "description": "Cinema emblématique de Lyon situé sur la plus grande place piétonne d'Europe",
+      "est_actif": true,
+      "latitude": 45.7578,
+      "longitude": 4.8320,
+      "salles": [
+        {
+          "nom": "Salle Confluence",
+          "capacite_totale": 300,
+          "nombre_rangees": 15,
+          "places_par_rangee": 20,
+          "places_standard": 285,
+          "places_pmr": 15,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_ATMOS"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Lumière",
+          "capacite_totale": 200,
+          "nombre_rangees": 12,
+          "places_par_rangee": 17,
+          "places_standard": 190,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Presqu'île",
+          "capacite_totale": 160,
+          "nombre_rangees": 10,
+          "places_par_rangee": 16,
+          "places_standard": 155,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Traboules",
+          "capacite_totale": 80,
+          "nombre_rangees": 8,
+          "places_par_rangee": 10,
+          "places_standard": 76,
+          "places_pmr": 4,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Croix-Rousse",
+          "capacite_totale": 60,
+          "nombre_rangees": 6,
+          "places_par_rangee": 10,
+          "places_standard": 56,
+          "places_pmr": 4,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        }
+      ]
+    },
+    {
+      "nom": "Cinéphoria Bruxelles Centre",
+      "pays": "BE",
+      "rue": "45 Avenue Louise",
+      "ville": "Bruxelles",
+      "code_postal": "1050",
+      "telephone": "+32 2 512 34 56",
+      "email": "bruxelles.centre@cinephoria.be",
+      "description": "Cinema de prestige au cœur de Bruxelles avec vue sur l'Avenue Louise",
+      "est_actif": true,
+      "latitude": 50.8371,
+      "longitude": 4.3676,
+      "salles": [
+        {
+          "nom": "Salle Atomium",
+          "capacite_totale": 250,
+          "nombre_rangees": 13,
+          "places_par_rangee": 19,
+          "places_standard": 240,
+          "places_pmr": 10,
+          "qualite_projection": ["4K", "LASER"],
+          "qualite_sonore": ["DOLBY_ATMOS"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Manneken Pis",
+          "capacite_totale": 180,
+          "nombre_rangees": 12,
+          "places_par_rangee": 15,
+          "places_standard": 170,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Grand Place",
+          "capacite_totale": 140,
+          "nombre_rangees": 10,
+          "places_par_rangee": 14,
+          "places_standard": 135,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Art Nouveau",
+          "capacite_totale": 90,
+          "nombre_rangees": 8,
+          "places_par_rangee": 11,
+          "places_standard": 85,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        }
+      ]
+    },
+    {
+      "nom": "Cinéphoria Paris Champs-Élysées",
+      "pays": "FR",
+      "rue": "123 Avenue des Champs-Élysées",
+      "ville": "Paris",
+      "code_postal": "75008",
+      "telephone": "+33 1 42 56 56 56",
+      "email": "contact@cinema-champs.fr",
+      "description": "Cinema moderne au cœur de Paris, près des Champs-Élysées",
+      "est_actif": true,
+      "latitude": 48.8738,
+      "longitude": 2.2950,
+      "salles": [
+        {
+          "nom": "Salle Arc de Triomphe",
+          "capacite_totale": 300,
+          "nombre_rangees": 15,
+          "places_par_rangee": 20,
+          "places_standard": 285,
+          "places_pmr": 15,
+          "qualite_projection": ["4K", "IMAX"],
+          "qualite_sonore": ["DOLBY_ATMOS"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Étoile",
+          "capacite_totale": 200,
+          "nombre_rangees": 12,
+          "places_par_rangee": 17,
+          "places_standard": 190,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Concorde",
+          "capacite_totale": 150,
+          "nombre_rangees": 10,
+          "places_par_rangee": 15,
+          "places_standard": 145,
+          "places_pmr": 5,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Trocadéro",
+          "capacite_totale": 120,
+          "nombre_rangees": 8,
+          "places_par_rangee": 15,
+          "places_standard": 115,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Madeleine",
+          "capacite_totale": 80,
+          "nombre_rangees": 8,
+          "places_par_rangee": 10,
+          "places_standard": 76,
+          "places_pmr": 4,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        }
+      ]
+    },
+    {
+      "nom": "Cinéphoria Marseille Vieux Port",
+      "pays": "FR",
+      "rue": "42 Quai du Port",
+      "ville": "Marseille",
+      "code_postal": "13002",
+      "telephone": "+33 4 91 78 90 12",
+      "email": "accueil@cinema-vieuxport.fr",
+      "description": "Vue imprenable sur le Vieux Port de Marseille",
+      "est_actif": true,
+      "latitude": 43.2965,
+      "longitude": 5.3698,
+      "salles": [
+        {
+          "nom": "Salle Vieux Port",
+          "capacite_totale": 220,
+          "nombre_rangees": 14,
+          "places_par_rangee": 16,
+          "places_standard": 210,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_ATMOS"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Notre-Dame de la Garde",
+          "capacite_totale": 180,
+          "nombre_rangees": 12,
+          "places_par_rangee": 15,
+          "places_standard": 170,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Canebière",
+          "capacite_totale": 140,
+          "nombre_rangees": 10,
+          "places_par_rangee": 14,
+          "places_standard": 135,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Calanques",
+          "capacite_totale": 100,
+          "nombre_rangees": 8,
+          "places_par_rangee": 12,
+          "places_standard": 95,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        }
+      ]
+    },
+    {
+      "nom": "Cinéphoria Anvers Port",
+      "pays": "BE",
+      "rue": "78 Grote Markt",
+      "ville": "Anvers",
+      "code_postal": "2000",
+      "telephone": "+32 3 234 56 78",
+      "email": "anvers@cinephoria.be",
+      "description": "Cinema historique au cœur d'Anvers avec architecture flamande authentique",
+      "est_actif": true,
+      "latitude": 51.2213,
+      "longitude": 4.4051,
+      "salles": [
+        {
+          "nom": "Salle Diamant",
+          "capacite_totale": 200,
+          "nombre_rangees": 14,
+          "places_par_rangee": 14,
+          "places_standard": 190,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_ATMOS"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Rubens",
+          "capacite_totale": 160,
+          "nombre_rangees": 10,
+          "places_par_rangee": 16,
+          "places_standard": 155,
+          "places_pmr": 5,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Van Dyck",
+          "capacite_totale": 130,
+          "nombre_rangees": 10,
+          "places_par_rangee": 13,
+          "places_standard": 125,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Plantin",
+          "capacite_totale": 100,
+          "nombre_rangees": 8,
+          "places_par_rangee": 12,
+          "places_standard": 95,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Steen",
+          "capacite_totale": 80,
+          "nombre_rangees": 8,
+          "places_par_rangee": 10,
+          "places_standard": 76,
+          "places_pmr": 4,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        }
+      ]
+    },
+    {
+      "nom": "Cinéphoria Lille Centre",
+      "pays": "FR",
+      "rue": "35 Place du Théâtre",
+      "ville": "Lille",
+      "code_postal": "59000",
+      "telephone": "+33 3 20 12 34 56",
+      "email": "lille@cinephoria.fr",
+      "description": "Cinema moderne au centre de Lille près de l'Opéra",
+      "est_actif": true,
+      "latitude": 50.6292,
+      "longitude": 3.0573,
+      "salles": [
+        {
+          "nom": "Salle Grand Place",
+          "capacite_totale": 200,
+          "nombre_rangees": 12,
+          "places_par_rangee": 17,
+          "places_standard": 190,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_ATMOS"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Beffroi",
+          "capacite_totale": 160,
+          "nombre_rangees": 10,
+          "places_par_rangee": 16,
+          "places_standard": 150,
+          "places_pmr": 10,
+          "qualite_projection": ["4K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Vieille Bourse",
+          "capacite_totale": 120,
+          "nombre_rangees": 8,
+          "places_par_rangee": 15,
+          "places_standard": 115,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        },
+        {
+          "nom": "Salle Citadelle",
+          "capacite_totale": 100,
+          "nombre_rangees": 8,
+          "places_par_rangee": 12,
+          "places_standard": 95,
+          "places_pmr": 5,
+          "qualite_projection": ["2K"],
+          "qualite_sonore": ["DOLBY_SURROUND"],
+          "accessibilite_pmr": true,
+          "climatisation": true
+        }
+      ]
+    }
+  ]
+}

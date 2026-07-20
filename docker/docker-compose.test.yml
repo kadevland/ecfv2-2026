@@ -1,0 +1,81 @@
+# Docker Compose Test - Cinéphoria ECF
+# Container PostgreSQL dédié aux tests avec tmpfs (RAM) pour performances
+# Usage: docker compose -f docker/docker-compose.test.yml up -d
+
+networks:
+  ecf_network:
+    external: true
+    name: cinephoria_network
+
+services:
+  postgres-test:
+    image: postgres:17-alpine
+    container_name: cinephoria.postgres.test
+    restart: "no"  # Pas de restart automatique
+    environment:
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_password
+      POSTGRES_DB: cinephoria_test
+      PGDATA: /var/lib/postgresql/data/pgdata
+      # Optimisations pour tests
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+    tmpfs:
+      # Base de données en RAM pour performance maximale
+      - /var/lib/postgresql/data:size=1G,noexec,nosuid,nodev
+    ports:
+      - "5433:5432"  # Port différent pour éviter conflit avec postgres dev
+    networks:
+      - ecf_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test_user -d cinephoria_test"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    # Configurations PostgreSQL optimisées pour tests
+    command: >
+      postgres
+      -c shared_buffers=256MB
+      -c max_connections=100
+      -c work_mem=4MB
+      -c maintenance_work_mem=64MB
+      -c random_page_cost=1.1
+      -c temp_file_limit=100MB
+      -c log_min_duration_statement=1000
+      -c log_line_prefix='%t [%p]: '
+      -c fsync=off
+      -c synchronous_commit=off
+      -c full_page_writes=off
+      -c max_wal_size=1GB
+      -c checkpoint_completion_target=0.9
+      -c wal_buffers=16MB
+
+  mongodb-test:
+    image: mongo:8.0
+    container_name: cinephoria.mongodb.test
+    restart: "no"  # Pas de restart automatique
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: test_user
+      MONGO_INITDB_ROOT_PASSWORD: test_password
+      MONGO_INITDB_DATABASE: cinephoria_read_test
+    tmpfs:
+      # Base de données en RAM pour performance maximale
+      - /data/db:size=512M,noexec,nosuid,nodev
+    ports:
+      - "27018:27017"  # Port différent pour éviter conflit avec mongodb dev
+    networks:
+      - ecf_network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')", "--quiet"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 10s
+    # Configurations MongoDB optimisées pour tests
+    command: >
+      mongod
+      --bind_ip_all
+      --auth
+      --quiet
+      --syncdelay 0
+      --wiredTigerCacheSizeGB 0.25

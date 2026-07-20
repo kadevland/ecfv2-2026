@@ -1,0 +1,120 @@
+{
+    "commit-msg": {
+        "enabled": true,
+        "actions": [
+            {
+                "action": "\\CaptainHook\\App\\Hook\\Message\\Action\\Regex",
+                "options": {
+                    "regex": "/^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert|wip)(\\(.+\\))?: .{1,50}/",
+                    "error": "⚠️  WARNING: Commit message should follow Conventional Commits format:\n   feat(scope): description\n   fix(scope): description\n   docs: description\n   style: description\n   refactor: description\n   perf: description\n   test: description\n   build: description\n   ci: description\n   chore: description\n   revert: description\n\n   See: https://www.conventionalcommits.org/",
+                    "subject": true
+                }
+            }
+        ]
+    },
+    "pre-commit": {
+        "enabled": true,
+        "actions": [
+            {
+                "action": "\\CaptainHook\\App\\Hook\\PHP\\Action\\Linting",
+                "options": {
+                    "standard": "PHP"
+                }
+            },
+            {
+                "action": "composer lint {$STAGED_FILES}",
+                "conditions": [
+                    {
+                        "exec": "and",
+                        "args": [
+                            {
+                                "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+                                "args": ["php"]
+                            },
+                            {
+                                "exec": "or",
+                                "args": [
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["app"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["database"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["routes"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["tests"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["config"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["resources"]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "action": "composer analyse {$STAGED_FILES}",
+                "conditions": [
+                    {
+                        "exec": "and",
+                        "args": [
+                            {
+                                "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\OfType",
+                                "args": ["php"]
+                            },
+                            {
+                                "exec": "or",
+                                "args": [
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["app"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["database"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["routes"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["config"]
+                                    },
+                                    {
+                                        "exec": "\\CaptainHook\\App\\Hook\\Condition\\FileStaged\\InDirectory",
+                                        "args": ["resources"]
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "pre-push": {
+        "enabled": false,
+        "actions": []
+    },
+    "post-commit": {
+        "enabled": false,
+        "actions": []
+    },
+    "post-merge": {
+        "enabled": false,
+        "actions": []
+    }
+}

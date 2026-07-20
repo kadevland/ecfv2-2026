@@ -1,0 +1,161 @@
+# =============================================================================
+# ASSETS STAGE - Build frontend assets with Node.js 22
+# =============================================================================
+FROM node:22-alpine AS assets
+
+WORKDIR /app
+
+# Copier les fichiers package pour installer les dépendances
+COPY package*.json ./
+
+# Installer toutes les dépendances (dev incluses pour Vite)
+RUN npm ci
+
+# Copier le code source pour le build
+COPY . .
+
+# Builder les assets avec Vite
+RUN npm run build
+
+# =============================================================================
+# BASE STAGE - Common for both dev and prod
+# =============================================================================
+FROM dunglas/frankenphp:1-php8.4 AS base
+
+# Installer les dépendances système
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    procps \
+    net-tools \
+    curl \
+    libssl-dev \
+    pkg-config \
+    libpq-dev \
+    tzdata \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configurer la timezone Europe/Paris
+RUN ln -snf /usr/share/zoneinfo/Europe/Paris /etc/localtime \
+    && echo "Europe/Paris" > /etc/timezone
+
+# Installer les extensions PHP pour Laravel + Octane
+RUN docker-php-ext-install pdo pdo_pgsql pcntl posix bcmath
+
+# Installer Redis et MongoDB via PECL
+RUN pecl install redis mongodb \
+    && docker-php-ext-enable redis mongodb
+
+# Configuration PHP timezone
+RUN echo "date.timezone=Europe/Paris" >> /usr/local/etc/php/conf.d/timezone.ini
+
+# Copier Composer depuis l'image officielle
+COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
+
+WORKDIR /app
+
+# =============================================================================
+# DEVELOPMENT STAGE - With Xdebug and dev tools
+# =============================================================================
+FROM base AS development
+
+# Installer Xdebug pour le développement
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug
+
+# Configuration Xdebug pour développement
+# RUN echo "xdebug.mode=debug,develop,coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && echo "xdebug.client_port=9003" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+#     && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
+# =============================================================================
+# PRODUCTION STAGE - Optimized without debug tools
+# =============================================================================
+FROM base AS production
+
+# Configuration PHP pour production
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
+
+# Optimisations production
+# RUN echo "opcache.enable=1" >> /usr/local/etc/php/conf.d/opcache.ini \
+#     && echo "opcache.memory_consumption=256" >> /usr/local/etc/php/conf.d/opcache.ini \
+#     && echo "opcache.max_accelerated_files=20000" >> /usr/local/etc/php/conf.d/opcache.ini \
+#     && echo "opcache.validate_timestamps=0" >> /usr/local/etc/php/conf.d/opcache.ini
+
+# Copier les fichiers avec permissions correctes
+COPY --chown=www-data:www-data . /app
+
+# Copier les assets buildés depuis l'étape assets
+COPY --from=assets --chown=www-data:www-data /app/public/build /app/public/build
+
+# Installer les dépendances composer (production)
+RUN composer install --no-dev --optimize-autoloader --no-scripts
+
+# Configuration Laravel pour build
+RUN cp .env.example .env 2>/dev/null || echo "APP_KEY=base64:$(openssl rand -base64 32)" > .env
+
+# Créer les répertoires Laravel et fichiers manquants
+RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache public/build \
+    && touch storage/logs/laravel.log \
+    && echo '{}' > public/build/manifest.json \
+    && chmod -R 775 storage bootstrap/cache public/build \
+    && chown -R www-data:www-data storage bootstrap/cache public/build
+
+# Optimiser pour production
+RUN php artisan config:clear \
+    && php artisan route:clear \
+    && php artisan view:clear
+
+# Créer un Caddyfile production propre
+RUN echo '{\n\
+	frankenphp {\n\
+		num_threads 2\n\
+	}\n\
+	auto_https off\n\
+}\n\
+\n\
+:8000 {\n\
+	root * /app/public\n\
+	encode zstd gzip\n\
+	php_server\n\
+}' > /app/Caddyfile.dev
+
+# Créer un script de démarrage robuste
+RUN echo '#!/bin/bash\n\
+set -e\n\
+\n\
+# Créer les fichiers manquants pour Laravel avec permissions root\n\
+echo "Setting up Laravel files..."\n\
+mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache public/build\n\
+touch storage/logs/laravel.log\n\
+echo "Laravel log file created at $(date)" > storage/logs/laravel.log\n\
+\n\
+# Les vrais assets sont copiés depuis l'étape assets du multi-stage build\n\
+\n\
+# Fix permissions Laravel style (sécurisé)\n\
+chown -R www-data:www-data storage bootstrap/cache public/build\n\
+chgrp -R www-data storage bootstrap/cache\n\
+chmod -R 755 storage bootstrap/cache\n\
+chmod -R g+w storage bootstrap/cache\n\
+# Permissions spécifiques fichier log\n\
+chmod 664 storage/logs/laravel.log\n\
+\n\
+# Attendre que les bases de données soient prêtes\n\
+echo "Waiting for databases..."\n\
+sleep 10\n\
+\n\
+# Migrer la base de données\n\
+php artisan migrate --force\n\
+\n\
+# Optimisations Laravel\n\
+php artisan config:cache\n\
+php artisan route:cache\n\
+php artisan view:cache\n\
+\n\
+# Démarrer FrankenPHP avec workers et Caddyfile propre\n\
+exec php artisan octane:frankenphp --host=0.0.0.0 --port=8000 --workers=${FRANKENPHP_NUM_WORKERS:-2} --max-requests=${FRANKENPHP_MAX_REQUESTS:-1000} --caddyfile=/app/Caddyfile.prod\n\
+' > /app/start.sh && chmod +x /app/start.sh
+
+# Commande par défaut : Script de démarrage robuste
+CMD ["/app/start.sh"]

@@ -1,0 +1,49 @@
+# Docker Compose Dev Override - Cinéphoria ECF
+# Ajoute outils de développement et expose les ports
+# Usage: docker compose -f docker-compose.yml -f docker-compose.dev.yml up
+
+services:
+  # Application avec hot-reload et debug
+  app:
+    build:
+      context: ..
+      dockerfile: ./docker/services/frankenphp/Dockerfile
+      target: development
+    ports:
+      - "${APP_PORT:-80}:8000"
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - LOG_LEVEL=debug
+    volumes:
+      - ../:/app
+      - /app/vendor
+      - /app/node_modules
+    #command: sh -c "composer install --no-interaction && php artisan octane:frankenphp --host=0.0.0.0 --port=8000 --workers=2 --max-requests=500"
+    command: sh -c "composer install --no-interaction && php artisan octane:frankenphp --host=0.0.0.0 --port=8000 --workers=1 --max-requests=1"
+
+  # PostgreSQL avec port exposé
+  postgres:
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - ../docker-volumes/postgresql:/var/lib/postgresql/data/pgdata
+
+  # MongoDB avec port exposé
+  mongodb:
+    ports:
+      - "${MONGODB_PORT:-27017}:27017"
+    volumes:
+      - ../docker-volumes/mongodb:/data/db
+
+  # PgBouncer avec port exposé
+  # pgbouncer:
+  #   ports:
+  #     - "${PGBOUNCER_PORT:-6432}:6432"
+
+  # Redis avec port exposé
+  redis:
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - ../docker-volumes/redis:/data

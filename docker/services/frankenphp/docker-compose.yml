@@ -1,0 +1,111 @@
+services:
+  app:
+    build:
+      context: ../../..
+      dockerfile: ./docker/services/frankenphp/Dockerfile
+      target: development
+    image: ecf-app-dev
+    container_name: ${DOCKER_APP_NAME:-ecf-app-dev}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${APP_PORT:-80}:8000"
+    command: ["sh", "-c", "composer install --no-interaction && php artisan octane:frankenphp --host=0.0.0.0 --port=8000 --workers=0"]
+    volumes:
+      - ../../../:/app
+      - ./Caddyfile.dev:/etc/caddy/Caddyfile
+      - ./php-dev.ini:/usr/local/etc/php/conf.d/99-config.ini
+      # Cache composer pour accélérer les installations
+      - composer_cache:/root/.composer
+    environment:
+      # Désactiver worker mode complètement
+      - FRANKENPHP_CONFIG=worker off
+      - COMPOSER_ALLOW_SUPERUSER=1
+      - DB_HOST=${POSTGRES_CONTAINER_NAME:-cinephoria.pgbouncer}
+      - DB_PORT=${POSTGRES_PORT:-5432}
+      - MONGODB_HOST=${MONGODB_CONTAINER_NAME:-cinephoria.mongodb}
+      - REDIS_HOST=${REDIS_CONTAINER_NAME:-cinephoria.redis}
+      - MAIL_HOST=cinephoria.mailpit
+    depends_on:
+      - postgres
+      - pgbouncer
+      - mongodb
+      - redis
+    networks:
+      - ecf_network
+
+  # Laravel Horizon for Queue Workers
+  horizon:
+    build:
+      context: ../../..
+      dockerfile: ./docker/services/php-cli/Dockerfile
+      target: development
+    image: ecf-horizon-cli
+    container_name: ${DOCKER_HORIZON_NAME:-ecf-horizon}
+    command: ["sh", "-c", "git config --global --add safe.directory /app && composer install --optimize-autoloader && php artisan config:cache && php artisan package:discover && php artisan horizon"]
+    volumes:
+      - ../../../:/app
+      - composer_cache:/root/.composer
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+      - DB_HOST=${PGBOUNCER_CONTAINER_NAME:-cinephoria.pgbouncer}
+      - DB_PORT=6432
+      - MONGODB_HOST=${MONGODB_CONTAINER_NAME:-cinephoria.mongodb}
+      - REDIS_HOST=${REDIS_CONTAINER_NAME:-cinephoria.redis}
+      - QUEUE_CONNECTION=redis
+    depends_on:
+      - redis
+      - postgres
+      - pgbouncer
+      - mongodb
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "php", "artisan", "horizon:status"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - ecf_network
+
+  # Laravel Scheduler
+  scheduler:
+    build:
+      context: ../../..
+      dockerfile: ./docker/services/php-cli/Dockerfile
+      target: development
+    image: ecf-scheduler-cli
+    container_name: ${DOCKER_SCHEDULER_NAME:-ecf-scheduler}
+    command: ["sh", "-c", "git config --global --add safe.directory /app && composer install --optimize-autoloader && php artisan config:cache && php artisan package:discover && php artisan schedule:work"]
+    volumes:
+      - ../../../:/app
+      - composer_cache:/root/.composer
+    environment:
+      - COMPOSER_ALLOW_SUPERUSER=1
+      - DB_HOST=${PGBOUNCER_CONTAINER_NAME:-cinephoria.pgbouncer}
+      - DB_PORT=6432
+      - MONGODB_HOST=${MONGODB_CONTAINER_NAME:-cinephoria.mongodb}
+      - REDIS_HOST=${REDIS_CONTAINER_NAME:-cinephoria.redis}
+    depends_on:
+      - redis
+      - postgres
+      - pgbouncer
+    restart: unless-stopped
+    networks:
+      - ecf_network
+
+  # Node.js for Vite development
+  node:
+    image: node:22-alpine
+    container_name: ${DOCKER_NODE_NAME:-ecf-node-dev}
+    working_dir: /app
+    ports:
+      - "${VITE_PORT:-5173}:5173"
+    volumes:
+      - ../../../:/app
+      # Caches NPM pour accélérer les installations
+      - npm_cache:/app/node_modules
+      - npm_cache:/root/.npm
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0 --port 5173"
+    networks:
+      - ecf_network

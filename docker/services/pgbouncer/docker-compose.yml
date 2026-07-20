@@ -1,0 +1,24 @@
+services:
+  pgbouncer:
+    build: .
+    container_name: ${PGBOUNCER_CONTAINER_NAME:-cinephoria.pgbouncer}
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      # Utilisateurs supplémentaires optionnels
+      POSTGRES_ADMIN_USER: ${POSTGRES_ADMIN_USER:-}
+      POSTGRES_ADMIN_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:-}
+      POSTGRES_READONLY_USER: ${POSTGRES_READONLY_USER:-}
+      POSTGRES_READONLY_PASSWORD: ${POSTGRES_READONLY_PASSWORD:-}
+    ports:
+      - "${PGBOUNCER_PORT:-6432}:6432"
+    networks:
+      - ecf_network
+    depends_on:
+      - postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -h localhost -p 6432 -U ${POSTGRES_USER} || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5

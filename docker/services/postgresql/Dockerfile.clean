@@ -1,0 +1,17 @@
+FROM postgres:17.6-alpine
+
+# PostgreSQL seulement - Plus de PgBouncer ni Supervisor
+# Configuration PostgreSQL optimisée
+
+# Variables d'environnement pour optimisation
+ENV POSTGRES_INITDB_ARGS="--encoding=UTF-8 --locale=C"
+
+# Configuration PostgreSQL custom
+COPY postgresql.conf /etc/postgresql/postgresql.conf
+COPY init-db.sql /docker-entrypoint-initdb.d/
+
+# Exposition du port PostgreSQL uniquement
+EXPOSE 5432
+
+# Démarrage PostgreSQL standard
+CMD ["postgres"]

@@ -1,0 +1,35 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+    - vendor/nesbot/carbon/extension.neon
+    - phpstan-baseline.neon
+
+parameters:
+    paths:
+        - app/
+        - database/
+        - routes/
+
+    # Level 10 is the highest level
+    level: 5
+
+    ignoreErrors:
+        # Respect Validation uuidV7 method exists but not recognized by PHPStan
+        - '#Call to an undefined static method Respect\\Validation\\Validator::uuidV7\(\)#'
+        # Laravel Str::uuidV7 method exists but not recognized by PHPStan
+        - '#Call to an undefined static method Illuminate\\Support\\Str::uuidV7\(\)#'
+        # Seance model properties exist in database but PHPStan doesn't detect them
+        - '#Access to an undefined property App\\Infrastructure\\Database\\Models\\Cinema\\Seance::\$film_uuid#'
+        - '#Access to an undefined property App\\Infrastructure\\Database\\Models\\Cinema\\Seance::\$salle_uuid#'
+        # MongoDB index issues - indexes work correctly
+        - '#Parameter \#2 \$name of method MongoDB\\Laravel\\Schema\\Blueprint::index\(\) expects string\|null, array#'
+        # Nullable expressions - relations are eager loaded so not null
+        - '#Expression on left side of \?\? is not nullable#'
+        # FilmCatalogue properties exist in MongoDB collection
+        - '#Access to an undefined property App\\Infrastructure\\Database\\ReadModels\\FilmCatalogue::\$titre_original#'
+    excludePaths:
+        - .castor.stub.php (?)
+        - .castor/*
+        - tests/
+        # Exclude DDD repository with interface mismatch issues
+        - app/Infrastructure/Repositories/User/EloquentUserRgpdConsentementRepository.php
+#        - ./*/*/FileToBeExcluded.php

@@ -22,3 +22,18 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+.castor.stub.php
+
+# Docker - garder les config, ignorer les données
+.env.docker
+/docker-volumes/postgresql/
+/docker-volumes/mongodb/
+/docker-volumes/redis/
+/docker-volumes/pgadmin/
+
+# Binaires FrankenPHP (ne pas versionner)
+/frankenphp
+frankenphp-linux-*
+frankenphp-darwin-*
+frankenphp-windows-*
+laradumps.yaml

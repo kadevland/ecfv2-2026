@@ -1,0 +1,213 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application\Cinema\Listeners;
+
+use Exception;
+use Illuminate\Support\Facades\Log;
+use App\Domain\Cinema\Events\SeanceCreated;
+use App\Domain\Cinema\Events\SeanceDeleted;
+use App\Domain\Cinema\Events\SeanceUpdated;
+use App\Domain\Cinema\Events\SeanceStatusChanged;
+use App\Infrastructure\Database\Models\MongoDB\SeancePublic;
+use App\Infrastructure\Database\Models\Cinema\Seance as SeanceModel;
+
+/**
+ * Synchronise les changements de séance vers MongoDB pour le read-side CQRS
+ */
+final class SyncSeanceToMongoDb
+{
+    /**
+     * Handle seance creation event
+     */
+    public function handleSeanceCreated(SeanceCreated $event): void
+    {
+        try {
+            $seanceUuid = $event->getSeanceUuid();
+
+            // Charger depuis PostgreSQL
+            $seanceModel = SeanceModel::where('uuid', $seanceUuid)->first();
+            if (!$seanceModel) {
+                Log::warning('Seance not found in PostgreSQL for sync', ['seance_uuid' => $seanceUuid]);
+                return;
+            }
+
+            // Charger les relations pour récupérer les données
+            $seanceModel->load(['film', 'salle.cinema']);
+
+            // Synchroniser vers MongoDB avec données complètes
+            SeancePublic::create([
+                '_id'                     => $seanceUuid,
+                'seance_id'               => $seanceUuid,
+                'film_id'                 => $seanceModel->film_uuid,
+                'salle_id'                => $seanceModel->salle_uuid,
+                'cinema_id'               => $seanceModel->salle?->cinema?->uuid?->value ?? 'unknown',
+                'date_heure_debut'        => $seanceModel->date_heure_debut,
+                'date_heure_fin'          => $seanceModel->date_heure_fin,
+                'version'                 => $seanceModel->version,
+                'statut'                  => $seanceModel->statut,
+                'placement_libre'         => $seanceModel->placement_libre,
+                'tarifs'                  => is_array($seanceModel->tarification) ? $seanceModel->tarification : $seanceModel->tarification->toArray(),
+                'taux_tva'                => $seanceModel->taux_tva->basisPoints,
+                'devise'                  => $seanceModel->devise->code,
+                'options_supplementaires' => [],
+                'places_totales'          => $seanceModel->salle?->capacite_totale ?? 200,
+                'places_vendues'          => 0,
+                'places_reservees'        => 0,
+                'places_disponibles'      => $seanceModel->salle?->capacite_totale ?? 200,
+                'film_titre'              => $seanceModel->film?->titre ?? 'Film inconnu',
+                'cinema_nom'              => $seanceModel->salle?->cinema?->nom ?? 'Cinéma inconnu',
+                'salle_nom'               => $seanceModel->salle?->nom ?? 'Salle inconnue',
+                'sous_titres'             => false,
+                'qualite_projection'      => 'standard',
+                'created_at'              => now(),
+                'updated_at'              => now(),
+            ]);
+
+            Log::info('Seance synced to MongoDB', [
+                'seance_uuid' => $seanceUuid,
+                'event'       => 'created',
+            ]);
+        } catch (Exception $e) {
+            Log::error('Failed to sync seance to MongoDB', [
+                'seance_uuid' => $event->getAggregateId(),
+                'error'       => $e->getMessage(),
+            ]);
+            throw $e;
+        }
+    }
+
+    /**
+     * Handle seance update event
+     */
+    public function handleSeanceUpdated(SeanceUpdated $event): void
+    {
+        try {
+            $seanceUuid = $event->getSeanceUuid();
+
+            // Charger depuis PostgreSQL avec relations
+            $seanceModel = SeanceModel::where('uuid', $seanceUuid)->with(['film', 'salle.cinema'])->first();
+            if (!$seanceModel) {
+                Log::warning('Seance not found in PostgreSQL for sync', ['seance_uuid' => $seanceUuid]);
+                return;
+            }
+
+            // Vérifier si la séance existe déjà dans MongoDB
+            $existingSeance = SeancePublic::where('seance_id', $seanceUuid)->first();
+            if ($existingSeance) {
+                // Mettre à jour avec champs sûrs
+                $existingSeance->update([
+                    'date_heure_debut' => $seanceModel->date_heure_debut,
+                    'date_heure_fin'   => $seanceModel->date_heure_fin,
+                    'version'          => $seanceModel->version,
+                    'statut'           => $seanceModel->statut,
+                    'updated_at'       => now(),
+                ]);
+            } else {
+                // Créer s'il n'existe pas
+                SeancePublic::create([
+                    '_id'                     => $seanceUuid,
+                    'seance_id'               => $seanceUuid,
+                    'film_id'                 => $seanceModel->film_uuid,
+                    'salle_id'                => $seanceModel->salle_uuid,
+                    'cinema_id'               => $seanceModel->salle?->cinema?->uuid?->value ?? 'unknown',
+                    'date_heure_debut'        => $seanceModel->date_heure_debut,
+                    'date_heure_fin'          => $seanceModel->date_heure_fin,
+                    'version'                 => $seanceModel->version,
+                    'statut'                  => $seanceModel->statut,
+                    'placement_libre'         => $seanceModel->placement_libre,
+                    'tarifs'                  => is_array($seanceModel->tarification) ? $seanceModel->tarification : $seanceModel->tarification->toArray(),
+                    'taux_tva'                => $seanceModel->taux_tva->basisPoints ?? 0,
+                    'devise'                  => $seanceModel->devise->code ?? 'EUR',
+                    'options_supplementaires' => [],
+                    'places_totales'          => $seanceModel->salle?->capacite_totale ?? 200,
+                    'places_vendues'          => 0,
+                    'places_reservees'        => 0,
+                    'places_disponibles'      => $seanceModel->salle?->capacite_totale ?? 200,
+                    'film_titre'              => $seanceModel->film->titre ?? null,
+                    'cinema_nom'              => $seanceModel->salle->cinema->nom ?? null,
+                    'salle_nom'               => $seanceModel->salle->nom ?? null,
+                    'sous_titres'             => false,
+                    'qualite_projection'      => 'standard',
+                    'created_at'              => now(),
+                    'updated_at'              => now(),
+                ]);
+            }
+
+            Log::info('Seance updated in MongoDB', [
+                'seance_uuid' => $seanceUuid,
+                'event'       => 'updated',
+            ]);
+        } catch (Exception $e) {
+            Log::error('Failed to update seance in MongoDB', [
+                'seance_uuid' => $event->getAggregateId(),
+                'error'       => $e->getMessage(),
+            ]);
+            throw $e;
+        }
+    }
+
+    /**
+     * Handle seance deletion event
+     */
+    public function handleSeanceDeleted(SeanceDeleted $event): void
+    {
+        try {
+            $seanceUuid = $event->getSeanceUuid();
+
+            // Soft delete dans MongoDB
+            SeancePublic::where('seance_id', $seanceUuid)->update([
+                'statut'     => 'supprimee',
+                'deleted_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            Log::info('Seance soft deleted in MongoDB', [
+                'seance_uuid' => $seanceUuid,
+                'event'       => 'deleted',
+            ]);
+        } catch (Exception $e) {
+            Log::error('Failed to soft delete seance in MongoDB', [
+                'seance_uuid' => $event->getAggregateId(),
+                'error'       => $e->getMessage(),
+            ]);
+            throw $e;
+        }
+    }
+
+    /**
+     * Handle seance status change event
+     */
+    public function handleSeanceStatusChanged(SeanceStatusChanged $event): void
+    {
+        try {
+            $seanceUuid = $event->getSeanceUuid();
+
+            // Charger depuis PostgreSQL pour obtenir le nouveau statut
+            $seanceModel = SeanceModel::where('uuid', $seanceUuid)->first();
+            if (!$seanceModel) {
+                Log::warning('Seance not found in PostgreSQL for status sync', ['seance_uuid' => $seanceUuid]);
+                return;
+            }
+
+            // Mettre à jour le statut dans MongoDB
+            $updatedRows = SeancePublic::where('seance_id', $seanceUuid)->update([
+                'statut'     => $seanceModel->statut,
+                'updated_at' => now(),
+            ]);
+
+            Log::info('Seance status updated in MongoDB', [
+                'seance_uuid'  => $seanceUuid,
+                'new_status'   => $seanceModel->statut,
+                'rows_updated' => $updatedRows,
+            ]);
+        } catch (Exception $e) {
+            Log::error('Failed to update seance status in MongoDB', [
+                'seance_uuid' => $event->getAggregateId(),
+                'error'       => $e->getMessage(),
+            ]);
+            throw $e;
+        }
+    }
+}

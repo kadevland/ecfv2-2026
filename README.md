@@ -1,59 +1,216 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🎬 Cinéphoria
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Application web de gestion de cinéma** — Projet ECF (RNCP 37873 — Concepteur Développeur d'Applications)
 
-## About Laravel
+<div align="center">
+  <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" />
+  <img src="https://img.shields.io/badge/PHP-8.4-777BB4?style=for-the-badge&logo=php&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-17-336791?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/MongoDB-7.0-47A248?style=for-the-badge&logo=mongodb&logoColor=white" />
+  <img src="https://img.shields.io/badge/Redis-7-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
+</div>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📋 Description
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Cinéphoria est une application de gestion de cinéma pour une chaîne franco-belge de 7 établissements. Elle permet aux spectateurs de consulter le catalogue, de réserver des places et de suivre leurs réservations, et offre aux équipes un espace professionnel de suivi de l'activité et d'administration de la programmation.
 
-## Learning Laravel
+Le projet repose sur une **architecture en couches** séparant la présentation, la logique métier et l'accès aux données.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 🎯 Fonctionnalités
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**Espace public**
+- Catalogue de films avec filtres par genre et classification
+- Consultation des cinémas (adresse, horaires, accessibilité)
+- Fiche film détaillée : synopsis, séances du jour, planning à venir
+- Réservation de places par catégorie tarifaire
 
-## Laravel Sponsors
+**Espace client**
+- Suivi de ses réservations
+- Billets au format QR code
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+**Espace employé** — consultation opérationnelle
+- Tableau de bord du jour (séances, réservations, films)
+- Planning détaillé des séances avec taux de remplissage
+- Suivi des réservations du jour
+- Programmation du jour par film
 
-### Premium Partners
+**Espace administration**
+- Gestion des films et des séances
+- Gestion des salles et des cinémas
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🏗️ Architecture des données
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+L'architecture repose sur une **séparation des flux de lecture et d'écriture**, afin d'optimiser à la fois l'intégrité des écritures et les performances de lecture.
 
-## Code of Conduct
+### PostgreSQL — flux d'écriture
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Source de vérité de l'application. Il gère les données transactionnelles (réservations, paiements, création des séances) où l'intégrité relationnelle et le respect des propriétés ACID sont critiques, via les transactions SQL.
 
-## Security Vulnerabilities
+### MongoDB — flux de lecture
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Dédié au catalogue public (films et séances).
 
-## License
+En SQL, afficher le planning d'un film avec les informations de la salle et du cinéma nécessiterait de multiples jointures coûteuses. MongoDB résout cela par la **dénormalisation** : les informations de jointure (`film_titre`, `cinema_nom`) sont dupliquées directement dans le document `seance`, ce qui permet une lecture en un seul appel.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Les séances sont isolées dans leur propre collection car elles ont une durée de vie limitée : un **index TTL** les supprime automatiquement après leur passage, ce qui évite la croissance infinie de la base et l'écriture de tâches planifiées de nettoyage.
+
+### Redis et synchronisation
+
+Redis assure la gestion des **sessions** et des **files d'attente**.
+
+La synchronisation PostgreSQL → MongoDB distingue deux cas :
+
+**Les réservations sont traitées de façon synchrone.** Lorsqu'une réservation est validée, le compteur de places disponibles est mis à jour immédiatement dans MongoDB, dans la continuité de la transaction. Le stock affiché reste ainsi fidèle à la réalité.
+
+**Le reste du catalogue est synchronisé en arrière-plan**, via Laravel Horizon et des workers : ajout ou modification de films, création de séances, mise à jour des informations de programmation. Ces opérations n'ont pas d'exigence d'immédiateté et sont traitées sans impacter les performances de la base transactionnelle.
+
+### Fiabilité des réservations concurrentes
+
+La garantie finale repose sur PostgreSQL : le décrément des places s'effectue dans une requête conditionnelle unique (`WHERE places_disponibles >= n`).
+
+Si deux clients tentent de réserver les mêmes dernières places au même instant, le premier passe, le second attend puis relit le nombre de places à jour. Il n'est refusé que s'il ne reste réellement plus assez de places — jamais par erreur.
+
+Le résultat : des performances de lecture optimales pour les visiteurs qui consultent le catalogue, et une fiabilité absolue sur les transactions.
+
+---
+
+## 🚀 Installation locale
+
+### Prérequis
+
+- [Docker](https://docs.docker.com/get-docker/) et Docker Compose
+- [Castor](https://castor.jolicode.com/) — outil de tâches PHP
+- Git
+
+### Étapes
+
+```bash
+# 1. Cloner le dépôt
+git clone https://github.com/kadevland/cinephoria-web-ecf-2025.git
+cd cinephoria-web-ecf-2025
+
+# 2. Configurer l'environnement
+cp .env.example .env
+
+# 3. Construire les images Docker
+castor docker:dev:build
+
+# 4. Démarrer les conteneurs (application, PostgreSQL, MongoDB, Redis)
+castor docker:dev:up
+
+# 5. Appliquer les migrations de base de données
+castor artisan migrate
+
+# 6. Charger le jeu de données de démonstration
+castor artisan init:dump-data
+```
+
+L'application est alors accessible sur **http://localhost**.
+
+### Commandes utiles
+
+```bash
+castor docker:dev:up          # Démarrer l'environnement
+castor docker:dev:down        # Arrêter l'environnement
+castor artisan <commande>     # Exécuter une commande Artisan
+```
+
+---
+
+## 👤 Comptes de démonstration
+
+| Profil | Identifiant | Mot de passe |
+|---|---|---|
+| Administrateur | `admin@cinephoria.fr` | `Admin123!@#` |
+| Employé | `jean.dupont@cinephoria-lille.fr` | `Employe123!@#` |
+| Client | `thomas.dubois@outlook.com` | `Client123!@#!` |
+
+---
+
+## 📦 Technologies
+
+### Backend
+- **Laravel 12** — framework applicatif
+- **PHP 8.4**
+- **Laravel Octane** — serveur applicatif haute performance
+- **PostgreSQL 17** — données transactionnelles
+- **MongoDB 7** — cache de lecture du catalogue
+- **Redis 7** — sessions et files d'attente
+- **Laravel Horizon** — supervision des traitements en arrière-plan
+- **Laravel Sanctum** — authentification des accès API
+
+### Frontend
+- **Blade** — rendu côté serveur
+- **Tailwind CSS v4** — styles
+- **Preline UI** — bibliothèque de composants d'interface
+- **Alpine.js** — interactivité légère, sans application monopage
+- **HTMX** — mises à jour partielles de page sans rechargement
+- **Leaflet** + **OpenStreetMap** — cartographie des cinémas
+- **Vite** — compilation des assets
+
+### Packages notables
+- **MoneyPHP** — calculs monétaires précis, sans erreur d'arrondi sur les prix
+- **endroid/qr-code** — génération des QR codes de billets
+- **spatie/laravel-pdf** et **dompdf** — génération de documents PDF
+- **respect/validation** — règles de validation métier
+- **laravel-phone** et **postal-code-validation** — validation des formats téléphone et code postal
+- **Castor** — automatisation des tâches de développement
+
+### Qualité et outillage
+- **Pest 4** — tests
+- **Larastan 3** — analyse statique
+- **Laravel Pint** — formatage du code
+- **CaptainHook** — vérifications automatiques avant commit
+- **Laravel Debugbar** et **Pail** — débogage et suivi des journaux
+
+## 🧪 Tests
+
+```bash
+castor artisan test              # Lancer les tests
+castor artisan test --parallel   # Exécution en parallèle
+```
+
+Les tests couvrent en priorité les règles métier sensibles : validation des formats, exactitude des calculs de prix, cohérence des réservations.
+
+---
+
+## 🔄 Intégration et déploiement continus
+
+**Intégration continue** — à chaque *pull request*, un workflow GitHub Actions exécute automatiquement les tests (Pest) et l'analyse statique (Larastan). Aucune modification défaillante ne peut être fusionnée.
+
+**Déploiement continu** — le déploiement est géré par Coolify, déclenché automatiquement par un *webhook* GitHub à chaque mise à jour de la branche de production.
+
+### Organisation Git
+
+- `main` — branche de production, toujours stable
+- `develop` — branche d'intégration
+- `feature/*` — une branche par fonctionnalité, issue de `develop`
+
+---
+
+## 🔒 Sécurité
+
+| Risque | Mesure |
+|---|---|
+| Injection SQL | ORM Eloquent (requêtes préparées), validation via Form Requests |
+| Failles XSS | Échappement automatique des vues Blade |
+| CSRF | Jetons natifs Laravel sur tous les formulaires |
+| Mots de passe | Hachage Argon2id, identifiants isolés dans une table dédiée |
+| Force brute | Limitation du taux de requêtes |
+| Exposition d'identifiants | Identifiants publics non séquentiels dans les URL |
+
+---
+
+## 📄 Licence
+
+Projet éducatif réalisé dans le cadre de la certification RNCP 37873.
+
+---
+
+<div align="center">
+  <p>Développé pour la certification Concepteur Développeur d'Applications</p>
+</div>
